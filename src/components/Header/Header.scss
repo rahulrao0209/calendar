@@ -1,0 +1,13 @@
+@import url("https://fonts.googleapis.com/css2?family=Pacifico&display=swap");
+@import "../../../public/index.scss";
+
+body {
+  font-family: "Pacifico", cursive;
+  font-size: 2.8rem;
+  font-weight: bold;
+}
+
+.header {
+  color: $primary-color;
+  padding: 2rem;
+}
