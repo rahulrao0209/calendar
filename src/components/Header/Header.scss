@@ -1,7 +1,6 @@
-@import url("https://fonts.googleapis.com/css2?family=Pacifico&display=swap");
 @import "../../../public/index.scss";
 
-$line-color: #00000033;
+$border-color: #00000033;
 
 body {
   font-family: "Pacifico", cursive;
@@ -14,5 +13,5 @@ body {
   align-items: center;
   color: $primary-color;
   padding: 0.8rem;
-  border-bottom: 0.1px solid $line-color;
+  border-bottom: 0.1px solid $border-color;
 }
