@@ -19,7 +19,7 @@ export const getMonthData = (month = new Date().getMonth()) => {
         const previousMonthDate = new Date(year, month, 0 - i);
         const previousMonthDay = previousMonthDate.getDate();
         const previousYear = previousMonthDate.getFullYear();
-        const [previousMonthName, previousDayName] = date.toLocaleDateString('en-in', {weekday: 'short', month: 'short'}).split(" ");
+        const [previousMonthName, previousDayName] = previousMonthDate.toLocaleDateString('en-in', {weekday: 'short', month: 'short'}).split(" ");
 
         previousMonthDays.push({
             day: previousMonthDay,

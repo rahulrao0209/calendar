@@ -5,7 +5,7 @@ import { getMonthData } from "./utils/getMonthData";
 
 export const App = () => {
     const [month, setMonth] = useState(new Date().getMonth());
-    const [data, setData] = useState<monthData[]>(getMonthData(0));
+    const [data, setData] = useState<monthData[]>([]);
 
     useEffect(() => {
       setData(getMonthData(month));

@@ -5,6 +5,7 @@ import "./Nav.scss";
 
 export const Nav: (props: NavProps) => JSX.Element = ({ data, setMonth }) => {
     
+    console.log("Data: ", data);
     const handleNav = () => {
         setMonth(10);
         console.log("SET MONTH");
