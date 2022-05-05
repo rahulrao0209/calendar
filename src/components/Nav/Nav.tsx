@@ -9,12 +9,11 @@ export const Nav: () => JSX.Element = () => {
     const [month, setMonth] = useState(new Date().getMonth());
     const [data, setData] = useState<monthData[]>([]);
 
-    console.log("Data: ", data);
+    // console.log("Data: ", data);
     useEffect(() => {
       setData(getMonthData(month));
     }, [month]);
 
-    console.log("MONTH: ", month);
     const handleNext = () => {
         console.log("SET MONTH");
         setMonth(month + 1);
@@ -25,10 +24,15 @@ export const Nav: () => JSX.Element = () => {
         setMonth(month - 1);
     }
 
+    const getToday = () => {
+        console.log("GET TODAY");
+        setMonth(new Date().getMonth());
+    }
+
     return (
         <div className="nav">
             <nav className="nav__left">
-                <div className="nav__today">Today</div>
+                <div className="nav__today" onClick={getToday}>Today</div>
 
                 <div className="nav__controls">
                     <span className="nav__controls--previous" onClick={handlePrev}>
@@ -39,7 +43,7 @@ export const Nav: () => JSX.Element = () => {
                     </span>
                 </div>
 
-                <div className="nav__month">May 2022</div>
+                <div className="nav__month">{data[data.length - 1]?.monthName} {data[data.length - 1]?.year}</div>
             </nav>
 
             <nav className="nav__right">

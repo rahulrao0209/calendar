@@ -22,6 +22,7 @@ $hover-color: #ededed;
     margin-inline: 1rem;
     margin-block-start: 0.2rem;
     padding: 0rem 1.8rem;
+    min-width: 2.5rem;
     font-size: 2.4rem;
 
     &:hover {
@@ -41,6 +42,7 @@ $hover-color: #ededed;
     // Hover
     &:hover {
       background-color: $hover-color;
+      cursor: pointer;
     }
   }
 
