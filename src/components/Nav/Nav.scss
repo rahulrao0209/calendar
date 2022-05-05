@@ -23,6 +23,10 @@ $hover-color: #ededed;
     margin-block-start: 0.2rem;
     padding: 0rem 1.8rem;
     font-size: 2.4rem;
+
+    &:hover {
+      cursor: default;
+    }
   }
 
   &__today {
