@@ -1,14 +1,28 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { IoCaretBack, IoCaretForward, IoCaretDown } from "react-icons/io5";
-import type { NavProps } from "../../types/interfaces";
+import { getMonthData } from "../../utils/getMonthData";
+import type { monthData } from "../../types/interfaces";
 import "./Nav.scss";
 
-export const Nav: (props: NavProps) => JSX.Element = ({ data, setMonth }) => {
+export const Nav: () => JSX.Element = () => {
     
+    const [month, setMonth] = useState(new Date().getMonth());
+    const [data, setData] = useState<monthData[]>([]);
+
     console.log("Data: ", data);
-    const handleNav = () => {
-        setMonth(10);
+    useEffect(() => {
+      setData(getMonthData(month));
+    }, [month]);
+
+    console.log("MONTH: ", month);
+    const handleNext = () => {
         console.log("SET MONTH");
+        setMonth(month + 1);
+    }
+
+    const handlePrev = () => {
+        console.log("SET MONTH");
+        setMonth(month - 1);
     }
 
     return (
@@ -17,10 +31,10 @@ export const Nav: (props: NavProps) => JSX.Element = ({ data, setMonth }) => {
                 <div className="nav__today">Today</div>
 
                 <div className="nav__controls">
-                    <span className="nav__controls--previous" onClick={handleNav}>
+                    <span className="nav__controls--previous" onClick={handlePrev}>
                         <IoCaretBack className="icon--prev" />
                     </span>
-                    <span className="nav__controls--next" onClick={handleNav}>
+                    <span className="nav__controls--next" onClick={handleNext}>
                         <IoCaretForward className="icon--next"/>
                     </span>
                 </div>

@@ -1,8 +1,10 @@
 import type { monthData } from "../types/interfaces";
 
 export const getMonthData = (month = new Date().getMonth()) => {
-    const date = new Date();
+    
+    const date = new Date(); // WIll always be today's date
     const year = date.getFullYear();
+
     const weekdays = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 
     const firstWeekdayOfMonth = new Date(year, month, 1).toLocaleDateString('en-us', { weekday: 'short'});
@@ -32,14 +34,15 @@ export const getMonthData = (month = new Date().getMonth()) => {
     // Collect all month days
     for(let i = 0; i < noOfCurrentMonthDays; i++) {
         const date = new Date(year, month, i + 1);
-        const day = date.getDate()
+        const day = date.getDate();
+        const currentYear = date.getFullYear();
         const [monthName, dayName] = date.toLocaleDateString('en-in', {weekday: 'short', month: 'short'}).split(" ");
 
         currentMonthDays.push({
             day,
             dayName,
             monthName,
-            year
+            year: currentYear
         })
     }
 

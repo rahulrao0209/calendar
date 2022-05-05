@@ -4,13 +4,13 @@ import { Nav } from "../Nav/Nav";
 import type { NavProps } from "../../types/interfaces";
 import "./Header.scss";
 
-export const Header: (props: NavProps) => JSX.Element = ({ data, setMonth }) => {
+export const Header: () => JSX.Element = () => {
 
   return (
       <div className="header">
         <Hamburger />
         <span>Calendar</span>
-        <Nav data={data} setMonth={setMonth} />
+        <Nav />
       </div>
   )
 }
