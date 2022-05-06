@@ -1,0 +1,33 @@
+@import "../../../public/index.scss";
+$border-color: #00000033;
+$hover-color: #ededed;
+
+.calendar {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  grid-template-rows: repeat(5, minmax(16rem, 1fr));
+  grid-auto-rows: minmax(16rem, 1fr);
+  grid-gap: 0.5rem;
+  margin: 0 8rem;
+  margin-top: 2rem;
+  font-family: "Noto Sans", sans-serif;
+
+  &__cell {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: flex-start;
+    align-items: center;
+    border: 0.1px solid $border-color;
+  }
+
+  &__day {
+    font-size: 1.6rem;
+    font-weight: 400;
+    color: #535353;
+  }
+
+  &__month {
+    font-size: 2rem;
+    font-weight: 400;
+  }
+}

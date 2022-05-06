@@ -1,15 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { IoCaretBack, IoCaretForward, IoCaretDown } from "react-icons/io5";
 import { getMonthData } from "../../utils/getMonthData";
-import type { monthData } from "../../types/interfaces";
+import type { NavProps } from "../../types/interfaces";
 import "./Nav.scss";
 
-export const Nav: () => JSX.Element = () => {
+export const Nav: (props: NavProps) => JSX.Element = ({data, setData}) => {
     
     const [month, setMonth] = useState(new Date().getMonth());
-    const [data, setData] = useState<monthData[]>([]);
 
-    // console.log("Data: ", data);
     useEffect(() => {
       setData(getMonthData(month));
     }, [month]);

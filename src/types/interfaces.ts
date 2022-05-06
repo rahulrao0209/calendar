@@ -5,7 +5,11 @@ export interface monthData {
     year: number
 }
 
+export interface Data {
+    data: monthData[]
+}
+
 export interface NavProps {
     data: monthData[],
-    setMonth:  React.Dispatch<React.SetStateAction<number>>
+    setData: React.Dispatch<React.SetStateAction<monthData[]>>
 }
