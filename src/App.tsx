@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Header } from "./components/Header/Header";
-import { Calendar } from "./components/Calendar/Calendar";
 import type { monthData } from "./types/interfaces";
+import { Main } from "./components/Main/Main";
 
 export const App = () => {
     const [data, setData] = useState<monthData[]>([]);
@@ -9,7 +9,7 @@ export const App = () => {
     return (
         <div>
            <Header data={data} setData={setData}/>
-           <Calendar data={data} />
+           <Main data={data} />
         </div>
     )
 };

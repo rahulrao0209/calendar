@@ -1,0 +1,33 @@
+@import "../../../public/index.scss";
+
+.drawer {
+  display: flex;
+  align-items: center;
+  flex-flow: column nowrap;
+
+  &__create-btn {
+    width: 16rem;
+    height: 5rem;
+    border-radius: 5rem;
+    border: none;
+    margin: 2rem 0;
+    background-color: #73807a;
+    color: #fff;
+
+    font-family: "Noto Sans", sans-serif;
+    font-size: 2rem;
+
+    box-shadow: 0px 8px 8px rgba(0, 0, 0, 0.2);
+    transition: all 0.2s;
+
+    &:hover {
+      box-shadow: 0px 16px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    &:active {
+      outline: none;
+      box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+      transform: translateY(0.5rem);
+    }
+  }
+}
