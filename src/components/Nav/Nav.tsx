@@ -4,7 +4,7 @@ import { getMonthData } from "../../utils/getMonthData";
 import type { NavProps } from "../../types/interfaces";
 import "./Nav.scss";
 
-export const Nav: (props: NavProps) => JSX.Element = ({data, setData}) => {
+export const Nav = ({ data, setData }: NavProps) => {
     
     const [month, setMonth] = useState(new Date().getMonth());
 

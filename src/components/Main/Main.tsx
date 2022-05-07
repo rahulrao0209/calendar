@@ -4,10 +4,10 @@ import { Calendar } from '../Calendar/Calendar';
 import { Drawer } from '../Drawer/Drawer';
 import "./Main.scss";
 
-export const Main: (props: Data) => JSX.Element = ({ data }) => {
+export const Main = ({ data }: Data) => {
     return (
         <section className="main">
-            <Drawer />
+            <Drawer data={data}/>
             <Calendar data={data}/>
         </section>
     )

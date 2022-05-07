@@ -4,7 +4,7 @@ import { Nav } from "../Nav/Nav";
 import type { NavProps } from "../../types/interfaces";
 import "./Header.scss";
 
-export const Header: (props: NavProps) => JSX.Element = ({data, setData}) => {
+export const Header = ({ data, setData }: NavProps) => {
 
   return (
       <div className="header">

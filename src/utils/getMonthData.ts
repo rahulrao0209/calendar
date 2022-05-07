@@ -2,7 +2,7 @@ import type { monthData } from "../types/interfaces";
 
 export const getMonthData = (month = new Date().getMonth()) => {
     
-    const date = new Date(); // WIll always be today's date
+    const date = new Date(); // Will always be today's date
     const year = date.getFullYear();
 
     const weekdays = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];

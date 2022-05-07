@@ -1,8 +1,9 @@
 import React from "react";
-import { CalendarSmall } from "../CalendarSmall/CalendarSmall";
+import type { Data } from "src/types/interfaces";
+import { CalendarSmall } from "../CalendarMini/CalendarMini";
 import "./Drawer.scss";
 
-export const Drawer = () =>{
+export const Drawer = ({ data }: Data) => {
     return (
         <div className="drawer">
             <button className="drawer__create-btn">
