@@ -8,8 +8,7 @@ $hover-color: #ededed;
   grid-template-rows: repeat(5, minmax(16rem, 1fr));
   grid-auto-rows: minmax(16rem, 1fr);
   grid-gap: 0.5rem;
-  margin: 0 3rem;
-  margin-top: 2rem;
+  margin: 2rem 3rem;
   font-family: "Noto Sans", sans-serif;
 
   &__cell {
