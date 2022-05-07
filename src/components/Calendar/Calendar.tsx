@@ -2,7 +2,7 @@ import React from "react";
 import type { Data } from "../../types/interfaces";
 import "./Calendar.scss";
 
-export const Calendar: (props: Data) => JSX.Element = ({ data }) => {
+export const Calendar = ({ data }: Data) => {
     return (
         <div className="calendar">
           {data.map((item, index) => {

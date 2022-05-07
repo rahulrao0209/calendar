@@ -9,7 +9,7 @@ export const Drawer = ({ data }: Data) => {
             <button className="drawer__create-btn">
                 Create
             </button>
-            <CalendarSmall />
+            <CalendarSmall data={data}/>
         </div>
     )
 }

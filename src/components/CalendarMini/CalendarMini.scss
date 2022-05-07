@@ -1,0 +1,92 @@
+@import "../../../public/index.scss";
+$hover-color: #ededed;
+
+.calendar-mini {
+  font-family: "Noto Sans", sans-serif;
+  font-size: 1.5rem;
+  width: 90%;
+
+  // Nav
+  &__nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0 1rem;
+    width: 100%;
+  }
+
+  &__nav-controls {
+    margin-block: 0.9rem 0;
+
+    & > span {
+      position: relative;
+      display: inline-block;
+      padding: 1rem;
+      border-radius: 100%;
+      width: 3.5rem;
+      height: 3.5rem;
+    }
+
+    .icon--prev,
+    .icon--next {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    &--previous:hover,
+    &--next:hover {
+      background-color: $hover-color;
+      cursor: pointer;
+    }
+  }
+
+  &__month {
+    cursor: default;
+  }
+
+  // Calendar
+  &__week {
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-evenly;
+    color: #535353;
+    text-align: center;
+
+    & > span {
+      display: inline-block;
+      width: 3rem;
+    }
+  }
+
+  &__calendar {
+    display: grid;
+    margin: 0.5rem auto;
+    grid-template-columns: repeat(7, 1fr);
+    grid-row-gap: 0.8rem;
+    justify-items: center;
+  }
+
+  &__cell {
+    position: relative;
+    font-size: 1.2rem;
+    font-weight: 400;
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 100%;
+    text-align: center;
+
+    & > span {
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      position: absolute;
+    }
+
+    &:hover {
+      cursor: pointer;
+      background-color: rgb(237, 237, 237);
+    }
+  }
+}
