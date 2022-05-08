@@ -5,11 +5,16 @@ import { Main } from "./components/Main/Main";
 
 export const App = () => {
     const [data, setData] = useState<monthData[]>([]);
-    
+    const [drawerClosed, setDrawerClosed] = useState(false);
+
+    // Create the props
+    const nav = { data, setData }
+    const hamburger = { drawerClosed, setDrawerClosed }
+
     return (
         <div>
-           <Header data={data} setData={setData}/>
-           <Main data={data} />
+           <Header nav={nav} hamburger={hamburger}/>
+           <Main data={data} drawerClosed={drawerClosed} />
         </div>
     )
 };
