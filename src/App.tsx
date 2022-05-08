@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import { Header } from "./components/Header/Header";
-import type { monthData } from "./types/interfaces";
+import type { monthData } from "./types/types";
 import { Main } from "./components/Main/Main";
 
 export const App = () => {
     const [data, setData] = useState<monthData[]>([]);
-
+    
     return (
         <div>
            <Header data={data} setData={setData}/>

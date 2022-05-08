@@ -1,5 +1,5 @@
 import React from "react";
-import type { Data } from "src/types/interfaces";
+import type { Data } from "src/types/types";
 import { CalendarSmall } from "../CalendarMini/CalendarMini";
 import "./Drawer.scss";
 

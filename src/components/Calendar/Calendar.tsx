@@ -1,5 +1,5 @@
 import React from "react";
-import type { Data } from "../../types/interfaces";
+import type { Data } from "../../types/types";
 import "./Calendar.scss";
 
 export const Calendar = ({ data }: Data) => {

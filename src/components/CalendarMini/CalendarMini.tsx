@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { IoCaretBack, IoCaretForward } from "react-icons/io5";
-import type { Data, monthData } from "src/types/interfaces";
+import type { Data, monthData } from "src/types/types";
 import { getMonthData } from "../../utils/getMonthData";
 import "./CalendarMini.scss";
 

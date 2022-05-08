@@ -4,6 +4,7 @@
   display: flex;
   align-items: center;
   flex-flow: column nowrap;
+  overflow: hidden;
 
   &__create-btn {
     width: 16rem;

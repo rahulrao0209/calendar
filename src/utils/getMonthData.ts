@@ -1,4 +1,4 @@
-import type { monthData } from "../types/interfaces";
+import type { monthData } from "../types/types";
 
 export const getMonthData = (month = new Date().getMonth()) => {
     

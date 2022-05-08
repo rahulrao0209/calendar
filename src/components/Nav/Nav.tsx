@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { IoCaretBack, IoCaretForward, IoCaretDown } from "react-icons/io5";
 import { getMonthData } from "../../utils/getMonthData";
-import type { NavProps } from "../../types/interfaces";
+import type { NavProps } from "../../types/types";
 import "./Nav.scss";
 
 export const Nav = ({ data, setData }: NavProps) => {
