@@ -22,6 +22,6 @@ export type HeaderProps = {
 
 export type MainProps = {
   data: monthData[],
-  drawerClosed: boolean 
+  drawerClosed?: boolean 
 }
 

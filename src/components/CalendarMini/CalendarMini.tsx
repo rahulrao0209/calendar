@@ -1,13 +1,20 @@
 import React, { useState, useEffect } from "react";
 import { IoCaretBack, IoCaretForward } from "react-icons/io5";
-import type { Data, monthData } from "src/types/types";
+import type { MainProps, monthData } from "src/types/types";
+import { isToday } from "../../utils/isToday";
 import { getMonthData } from "../../utils/getMonthData";
 import "./CalendarMini.scss";
 
-export const CalendarSmall = ({ data }: Data) => {
+export const CalendarSmall = ({ data }: MainProps) => {
 
     const [miniData, setMiniData] = useState<monthData[]>([]);
     const [month, setMonth] = useState(new Date().getMonth());
+
+    // Today
+    const todayStyle = {
+        'color': '#fff',
+        'backgroundColor': '#5e7a6e'
+    }
 
     const handleNext = () => {
         console.log("SET MONTH");
@@ -53,8 +60,11 @@ export const CalendarSmall = ({ data }: Data) => {
             </div>
             <div className="calendar-mini__calendar">
             {miniData.map((item, index) => {
+             
+             let isCurrentDayToday = isToday(item);
+
              return (
-               <div className="calendar-mini__cell" key={index}>
+               <div className="calendar-mini__cell" key={index} style={isCurrentDayToday ? todayStyle: {}}>
                  <span className="calendar-mini__month">{item.day}</span>
                </div>
             )

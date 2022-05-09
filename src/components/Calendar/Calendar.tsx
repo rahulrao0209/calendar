@@ -1,8 +1,8 @@
 import React from "react";
-import type { Data } from "../../types/types";
+import type { MainProps, monthData } from "../../types/types";
 import "./Calendar.scss";
 
-export const Calendar = ({ data }: Data) => {
+export const Calendar = ({ data }: MainProps) => {
     return (
         <div className="calendar">
           {data.map((item, index) => {

@@ -10,7 +10,7 @@ export const Drawer = ({ data }: MainProps) => {
             <button className="drawer__create-btn">
                 Create
             </button>
-            <CalendarSmall data={data}/>
+            <CalendarSmall data={data} />
         </div>
     )
 }
