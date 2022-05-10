@@ -88,5 +88,9 @@ $hover-color: #ededed;
       cursor: pointer;
       background-color: rgb(237, 237, 237);
     }
+
+    &--clicked {
+      background-color: #d9f1e7;
+    }
   }
 }

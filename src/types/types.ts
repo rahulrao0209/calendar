@@ -22,6 +22,7 @@ export type HeaderProps = {
 
 export type MainProps = {
   data: monthData[],
-  drawerClosed?: boolean 
+  drawerClosed?: boolean,
+  setData: React.Dispatch<React.SetStateAction<monthData[]>>
 }
 

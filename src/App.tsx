@@ -13,8 +13,8 @@ export const App = () => {
 
     return (
         <div>
-           <Header nav={nav} hamburger={hamburger}/>
-           <Main data={data} drawerClosed={drawerClosed} />
+           <Header nav={nav} hamburger={hamburger} />
+           <Main data={data} drawerClosed={drawerClosed} setData={setData} />
         </div>
     )
 };

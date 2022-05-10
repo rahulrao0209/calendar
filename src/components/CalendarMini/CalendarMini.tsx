@@ -1,14 +1,15 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { IoCaretBack, IoCaretForward } from "react-icons/io5";
 import type { MainProps, monthData } from "src/types/types";
 import { isToday } from "../../utils/isToday";
 import { getMonthData } from "../../utils/getMonthData";
 import "./CalendarMini.scss";
 
-export const CalendarSmall = ({ data }: MainProps) => {
+export const CalendarSmall = ({ data, setData }: MainProps) => {
 
     const [miniData, setMiniData] = useState<monthData[]>([]);
     const [month, setMonth] = useState(new Date().getMonth());
+    const clickedDay = useRef<HTMLElement | null>(null);
 
     // Today
     const todayStyle = {
@@ -26,8 +27,25 @@ export const CalendarSmall = ({ data }: MainProps) => {
         setMonth(month - 1);
     };
 
+    const handleDayClick = (event: React.MouseEvent<HTMLDivElement> | React.MouseEvent<HTMLSpanElement>) => {
+        
+        setData(miniData);
+
+        const currentNode = event.currentTarget.parentElement;
+    
+        if(currentNode != clickedDay.current) {
+            clickedDay.current?.classList.remove('calendar-mini__cell--clicked');
+            clickedDay.current = currentNode;
+            clickedDay.current?.classList.add('calendar-mini__cell--clicked');
+        } else if(currentNode === clickedDay.current) {
+            clickedDay.current?.classList.remove('calendar-mini__cell--clicked');
+        }
+    }
+
     useEffect(() => {
-      setMiniData(getMonthData(month))
+      setMiniData(getMonthData(month));
+      clickedDay.current?.classList.remove('calendar-mini__cell--clicked');
+      clickedDay.current = null;
     }, [month]);
 
     useEffect(() => {
@@ -64,8 +82,8 @@ export const CalendarSmall = ({ data }: MainProps) => {
              let isCurrentDayToday = isToday(item);
 
              return (
-               <div className="calendar-mini__cell" key={index} style={isCurrentDayToday ? todayStyle: {}}>
-                 <span className="calendar-mini__month">{item.day}</span>
+               <div className="calendar-mini__cell" key={index} style={isCurrentDayToday ? todayStyle: {}} >
+                 <span className="calendar-mini__day" onClick={handleDayClick}>{item.day}</span>
                </div>
             )
         })}
