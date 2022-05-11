@@ -3,6 +3,7 @@ import { IoCaretBack, IoCaretForward } from "react-icons/io5";
 import type { MainProps, monthData } from "src/types/types";
 import { isToday } from "../../utils/isToday";
 import { getMonthData } from "../../utils/getMonthData";
+import { todayStyle } from "../Calendar/Calendar";
 import "./CalendarMini.scss";
 
 export const CalendarSmall = ({ data, setData }: MainProps) => {
@@ -10,12 +11,6 @@ export const CalendarSmall = ({ data, setData }: MainProps) => {
     const [miniData, setMiniData] = useState<monthData[]>([]);
     const [month, setMonth] = useState(new Date().getMonth());
     const clickedDay = useRef<HTMLElement | null>(null);
-
-    // Today
-    const todayStyle = {
-        'color': '#fff',
-        'backgroundColor': '#5e7a6e'
-    }
 
     const handleNext = () => {
         console.log("SET MONTH");
