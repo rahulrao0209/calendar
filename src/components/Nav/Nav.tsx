@@ -22,15 +22,15 @@ export const Nav = ({ data, setData }: NavProps) => {
         setMonth(month - 1);
     }
 
-    const getToday = () => {
-        console.log("GET TODAY");
+    const setToday = () => {
+        console.log("SET TODAY");
         setMonth(new Date().getMonth());
     }
 
     return (
         <div className="nav">
             <nav className="nav__left">
-                <div className="nav__today" onClick={getToday}>Today</div>
+                <div className="nav__today" onClick={setToday}>Today</div>
 
                 <div className="nav__controls">
                     <span className="nav__controls--previous" onClick={handlePrev}>
