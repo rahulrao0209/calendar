@@ -1,5 +1,4 @@
 @import "../../../public/index.scss";
-$hover-color: #ededed;
 
 .calendar-mini {
   font-family: "Noto Sans", sans-serif;
@@ -90,7 +89,7 @@ $hover-color: #ededed;
     }
 
     &--clicked {
-      background-color: #d9f1e7;
+      background-color: $day-clicked-background;
     }
   }
 }

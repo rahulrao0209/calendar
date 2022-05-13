@@ -1,6 +1,4 @@
 @import "../../../public/index.scss";
-$border-color: #00000033;
-$hover-color: #ededed;
 
 .calendar {
   display: grid;
@@ -29,7 +27,7 @@ $hover-color: #ededed;
 
   &__day {
     display: inline-block;
-    background-color: #5e7a6e;
+    background-color: $primary-color;
     border-radius: 8px 8px 0 0;
     width: 100%;
     text-align: center;
