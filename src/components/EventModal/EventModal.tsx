@@ -2,6 +2,7 @@ import React from "react";
 import type { EventModalType } from "../../types/types";
 import { MdOutlineEvent } from "react-icons/md";
 import { BsPencil } from "react-icons/bs";
+import { AiOutlineClockCircle } from "react-icons/ai";
 import "./EventModal.scss";
 
 export const EventModal:  ({ show, date, setShowModal }: EventModalType) => JSX.Element | null = ({ show, date, setShowModal }: EventModalType) => {
@@ -21,15 +22,24 @@ export const EventModal:  ({ show, date, setShowModal }: EventModalType) => JSX.
      </div>
 
      <div className="event-modal__form">
+         <MdOutlineEvent className="event-modal__icon" />
          <div className="event-modal__field">
-           <MdOutlineEvent className="event-modal__icon" />
            <input type="text" name="title" placeholder="Add Title"/>
          </div>
 
+         <BsPencil className="event-modal__icon" />
          <div className="event-modal__field">
-           <BsPencil className="event-modal__icon" />
            <input type="text" name="description" placeholder="Add Description"/>
          </div>
+         
+         <AiOutlineClockCircle className="event-modal__icon" />
+         <div className="event-modal__field">
+           <span>May 14, 2022</span>
+         </div>
+
+         <button onClick={(e) => e.preventDefault()}>
+           Save
+         </button>
      </div>
     
     </form>

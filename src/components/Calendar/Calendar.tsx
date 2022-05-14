@@ -5,7 +5,7 @@ import "./Calendar.scss";
 
 export const todayStyle = {
   'color': '#fff',
-  'backgroundColor': '#5e7a6e'
+  'backgroundColor': '#e6a770'
 }
 
 export const Calendar = ({ data }: MainProps) => {
