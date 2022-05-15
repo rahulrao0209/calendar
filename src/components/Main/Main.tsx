@@ -4,12 +4,12 @@ import { Calendar } from '../Calendar/Calendar';
 import { Drawer } from '../Drawer/Drawer';
 import "./Main.scss";
 
-export const Main = ({ data, drawerClosed, setData, setShowModal }: MainProps) => {
+export const Main = ({ data, drawerClosed, setData, setShowModal, setEventForDay }: MainProps) => {
 
     return (
         <section className={drawerClosed ? 'main--closed' : 'main'}>
-            <Drawer data={data} drawerClosed={drawerClosed} setData={setData} setShowModal={setShowModal} />
-            <Calendar data={data} setData={setData} setShowModal={setShowModal}/>
+            <Drawer data={data} drawerClosed={drawerClosed} setData={setData} setShowModal={setShowModal} setEventForDay={setEventForDay} />
+            <Calendar data={data} setData={setData} setShowModal={setShowModal} setEventForDay={setEventForDay} />
         </section>
     )
 }

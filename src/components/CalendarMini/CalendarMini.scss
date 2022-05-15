@@ -89,7 +89,7 @@
     }
 
     &--clicked {
-      background-color: $day-clicked-background;
+      background-color: lighten($primary-color, 20);
     }
   }
 }

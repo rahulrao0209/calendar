@@ -25,10 +25,11 @@ export type MainProps = {
   drawerClosed?: boolean,
   setData: React.Dispatch<React.SetStateAction<monthData[]>>
   setShowModal: React.Dispatch<React.SetStateAction<boolean>>
+  setEventForDay: React.Dispatch<React.SetStateAction<monthData>>
 }
 
 export type EventModalType = {
   show: boolean,
-  date: string,
-  setShowModal: React.Dispatch<React.SetStateAction<boolean>>
+  eventForDay: monthData,
+  setShowModal: React.Dispatch<React.SetStateAction<boolean>>,
 }
