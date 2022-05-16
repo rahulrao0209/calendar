@@ -8,11 +8,14 @@ export const todayStyle = {
   'backgroundColor': '#e6a770'
 }
 
-export const Calendar = ({ data, setEventForDay, setShowModal }: MainProps) => {
+export const Calendar = ({ data, state, eventList, setEventDay, setShowModal }: MainProps) => {
+  
+  console.log("EVENT IN CALENDAR: ", state);
+  console.log("EVENTS: ", eventList);
 
   const handleClick = (event: React.MouseEvent<HTMLDivElement> | React.MouseEvent<HTMLSpanElement>) => {
     if(typeof(event.currentTarget.dataset.value) === "string") {
-      setEventForDay(JSON.parse(event.currentTarget.dataset.value));
+      setEventDay(JSON.parse(event.currentTarget.dataset.value));
       setShowModal(true);
     }
   }
@@ -25,6 +28,7 @@ export const Calendar = ({ data, setEventForDay, setShowModal }: MainProps) => {
                <div className="calendar__cell" key={index} onClick={handleClick} data-value={JSON.stringify(item)}>
                  <span className="calendar__day">{item.dayName}</span>
                  <span className="calendar__month" style={isCurrentDayToday ? todayStyle: {}}>{item.day}</span>
+                 {/* <span className="test"></span> */}
                </div>
             )
         })}

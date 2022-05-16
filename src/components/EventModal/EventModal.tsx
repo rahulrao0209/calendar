@@ -1,19 +1,35 @@
 import React from "react";
-import type { EventModalType } from "../../types/types";
+import type { EventModalType, EventData, Action } from "../../types/types";
 import { MdOutlineEvent } from "react-icons/md";
 import { BsPencil } from "react-icons/bs";
 import { AiOutlineClockCircle } from "react-icons/ai";
 import "./EventModal.scss";
 
-export const EventModal:  ({ show, eventForDay, setShowModal }: EventModalType) => JSX.Element | null = ({ show, eventForDay, setShowModal }: EventModalType) => {
-  const closeModal = () => { setShowModal(false); }
+export const EventModal:  ({ show, eventDay, setShowModal, setEventList }: EventModalType) => JSX.Element | null = ({ show, state, eventList, eventDay, dispatch, setShowModal, setEventList }: EventModalType) => {
+ 
+  // console.log("STATE: ", state);
 
   const handleTitleChange = (event: React.FormEvent<HTMLInputElement>) => {
     console.log("Title: ", event.currentTarget.value);
+    dispatch({ type: 'update-title', data: event.currentTarget.value });   
   }
 
   const handleDescChange = (event: React.FormEvent<HTMLInputElement>) => {
     console.log("Desc: ", event.currentTarget.value);
+    dispatch({ type: 'update-desc', data: event.currentTarget.value });
+  }
+
+  const closeModal = () => { 
+    setShowModal(false); 
+  }
+
+  const saveEvent = () => {
+    setShowModal(false);
+    if(eventList) {
+      setEventList([...eventList, state]);
+    } else {
+      setEventList([state]);
+    }
   }
   
   return show ? (
@@ -41,10 +57,10 @@ export const EventModal:  ({ show, eventForDay, setShowModal }: EventModalType) 
          
          <AiOutlineClockCircle className="event-modal__icon" />
          <div className="event-modal__field">
-           <span>{eventForDay.monthName} {eventForDay.day}, {eventForDay.year}</span>
+           <span>{eventDay.monthName} {eventDay.day}, {eventDay.year}</span>
          </div>
 
-         <button onClick={closeModal}>
+         <button onClick={saveEvent}>
            Save
          </button>
      </div>

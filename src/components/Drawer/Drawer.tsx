@@ -4,10 +4,10 @@ import { getDayData } from "../../utils/getDayData";
 import { CalendarSmall } from "../CalendarMini/CalendarMini";
 import "./Drawer.scss";
 
-export const Drawer = ({ data, setData, setShowModal, setEventForDay }: MainProps) => {
+export const Drawer = ({ data, state, setData, setShowModal, setEventDay }: MainProps) => {
 
     const handleModal = () => { 
-        setEventForDay(getDayData());
+        setEventDay(getDayData());
         setShowModal(true); 
     }
     
@@ -16,7 +16,7 @@ export const Drawer = ({ data, setData, setShowModal, setEventForDay }: MainProp
             <button className="drawer__create-btn" onClick={handleModal}>
                 Create
             </button>
-            <CalendarSmall data={data} setData={setData} setShowModal={setShowModal} setEventForDay={setEventForDay}/>
+            <CalendarSmall data={data} state={state} setData={setData} setShowModal={setShowModal} setEventDay={setEventDay}/>
         </div>
     )
 }
