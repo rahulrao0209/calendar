@@ -2,6 +2,7 @@ import React from "react";
 import { isToday } from "../../utils/isToday";
 import type { MainProps } from "../../types/types";
 import "./Calendar.scss";
+import { findMatchingEvents } from "../../utils/findMatchingEvents";
 
 export const todayStyle = {
   'color': '#fff',
@@ -24,11 +25,15 @@ export const Calendar = ({ data, state, eventList, setEventDay, setShowModal }: 
         <div className="calendar">
           {data.map((item, index) => {
             let isCurrentDayToday = isToday(item);
+            let matchingEvents = findMatchingEvents(eventList, item);
+            console.log("MATCHING EVENTS: ", matchingEvents);
              return (
                <div className="calendar__cell" key={index} onClick={handleClick} data-value={JSON.stringify(item)}>
                  <span className="calendar__day">{item.dayName}</span>
                  <span className="calendar__month" style={isCurrentDayToday ? todayStyle: {}}>{item.day}</span>
-                 {/* <span className="test"></span> */}
+                 <div className="calendar__event">
+                  { matchingEvents?.map(event => <div>{event.title}</div>) }
+                 </div>
                </div>
             )
         })}

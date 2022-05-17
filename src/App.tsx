@@ -24,7 +24,6 @@ export const App = () => {
     const nav = { data, setData }
     const hamburger = { drawerClosed, setDrawerClosed }
 
-    // effect 
     useEffect(() => {
       dispatch({ type: 'update-date', data: eventDay });
     }, [eventDay])

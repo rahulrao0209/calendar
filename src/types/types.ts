@@ -20,6 +20,18 @@ export type HeaderProps = {
   hamburger: HamburgerProps;
 }
 
+export type CalendarMiniProps = {
+  data: monthData[];
+  setData: React.Dispatch<React.SetStateAction<monthData[]>>;
+}
+
+export type DrawerProps = {
+  data: monthData[];
+  setData: React.Dispatch<React.SetStateAction<monthData[]>>;
+  setShowModal: React.Dispatch<React.SetStateAction<boolean>>;
+  setEventDay: React.Dispatch<React.SetStateAction<monthData>>;
+}
+
 export type MainProps = {
   data: monthData[];
   state: EventData;

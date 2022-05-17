@@ -156,6 +156,7 @@ $hover-color: #ededed;
 
       &:focus {
         outline: none;
+        border-bottom: 2.5px solid $primary-color;
       }
     }
 

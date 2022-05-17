@@ -1,12 +1,12 @@
 import React, { useState, useEffect, useRef } from "react";
 import { IoCaretBack, IoCaretForward } from "react-icons/io5";
-import type { MainProps, monthData } from "src/types/types";
+import type { monthData, CalendarMiniProps } from "src/types/types";
 import { isToday } from "../../utils/isToday";
 import { getMonthData } from "../../utils/getMonthData";
 import { todayStyle } from "../Calendar/Calendar";
 import "./CalendarMini.scss";
 
-export const CalendarSmall = ({ data, setData }: MainProps) => {
+export const CalendarMini = ({ data, setData }: CalendarMiniProps) => {
 
     const [miniData, setMiniData] = useState<monthData[]>([]);
     const [month, setMonth] = useState(new Date().getMonth());

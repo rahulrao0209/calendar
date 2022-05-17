@@ -8,7 +8,7 @@ export const Main = ({ data, state, eventList, drawerClosed, setData, setShowMod
 
     return (
         <section className={drawerClosed ? 'main--closed' : 'main'}>
-            <Drawer data={data} eventList={eventList} state={state} drawerClosed={drawerClosed} setData={setData} setShowModal={setShowModal} setEventDay={setEventDay} />
+            <Drawer data={data} setData={setData} setShowModal={setShowModal} setEventDay={setEventDay} />
             <Calendar data={data} eventList={eventList} state={state} setData={setData} setShowModal={setShowModal} setEventDay={setEventDay} />
         </section>
     )

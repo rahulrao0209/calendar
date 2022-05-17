@@ -1,10 +1,10 @@
 import React from "react";
-import type { MainProps } from "src/types/types";
+import type { DrawerProps } from "src/types/types";
 import { getDayData } from "../../utils/getDayData";
-import { CalendarSmall } from "../CalendarMini/CalendarMini";
+import { CalendarMini } from "../CalendarMini/CalendarMini";
 import "./Drawer.scss";
 
-export const Drawer = ({ data, state, setData, setShowModal, setEventDay }: MainProps) => {
+export const Drawer = ({ data, setData, setShowModal, setEventDay }: DrawerProps) => {
 
     const handleModal = () => { 
         setEventDay(getDayData());
@@ -16,7 +16,7 @@ export const Drawer = ({ data, state, setData, setShowModal, setEventDay }: Main
             <button className="drawer__create-btn" onClick={handleModal}>
                 Create
             </button>
-            <CalendarSmall data={data} state={state} setData={setData} setShowModal={setShowModal} setEventDay={setEventDay}/>
+            <CalendarMini data={data} setData={setData}/>
         </div>
     )
 }
