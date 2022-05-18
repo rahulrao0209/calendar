@@ -25,9 +25,10 @@ export const EventModal:  ({ show, eventDay, setShowModal, setEventList }: Event
 
   const saveEvent = () => {
     setShowModal(false);
-    if(eventList) {
+    if(eventList && state.title) {
       setEventList([...eventList, state]);
-    } else {
+    } else if(state.title){
+      // Check if the event being added atleast has a title
       setEventList([state]);
     }
   }
