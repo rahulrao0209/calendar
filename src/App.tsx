@@ -19,6 +19,7 @@ export const App = () => {
     const [eventDay, setEventDay] = useState<monthData>(getDayData());
     const [eventList, setEventList] = useState<EventData[]>();
     const [state, dispatch] = useReducer(eventReducer, initialEventState);
+    const [openedEvent, setOpenedEvent] = useState<EventData>();
     
     // Create the props
     const nav = { data, setData }
@@ -31,8 +32,28 @@ export const App = () => {
     return (
         <div>
            <Header nav={nav} hamburger={hamburger} />
-           <Main data={data} state={state} eventList={eventList} drawerClosed={drawerClosed} setData={setData} setShowModal={setShowModal} setEventDay={setEventDay} />
-           <EventModal show={showModal} eventDay={eventDay} eventList={eventList} setShowModal={setShowModal} state={state} dispatch={dispatch} setEventList={setEventList}/>
+           <Main
+             data={data}
+             state={state}
+             eventList={eventList}
+             openedEvent={openedEvent}
+             drawerClosed={drawerClosed}
+             setData={setData}
+             setShowModal={setShowModal}
+             setEventDay={setEventDay} 
+             setOpenedEvent={setOpenedEvent}
+           />
+           <EventModal
+             show={showModal}
+             eventDay={eventDay}
+             eventList={eventList}
+             setShowModal={setShowModal}
+             state={state}
+             openedEvent={openedEvent}
+             dispatch={dispatch}
+             setEventList={setEventList}
+             setOpenedEvent={setOpenedEvent}
+            />
         </div>
     )
 };

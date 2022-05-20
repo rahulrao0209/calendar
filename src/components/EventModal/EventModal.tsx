@@ -1,26 +1,27 @@
 import React from "react";
 import type { EventModalType, EventData, Action } from "../../types/types";
-import { MdOutlineEvent } from "react-icons/md";
+import { MdOutlineEvent, MdDeleteOutline } from "react-icons/md";
 import { BsPencil } from "react-icons/bs";
 import { AiOutlineClockCircle } from "react-icons/ai";
 import "./EventModal.scss";
 
-export const EventModal:  ({ show, eventDay, setShowModal, setEventList }: EventModalType) => JSX.Element | null = ({ show, state, eventList, eventDay, dispatch, setShowModal, setEventList }: EventModalType) => {
+export const EventModal = ({ show, state, openedEvent, eventList, eventDay, dispatch, setShowModal, setEventList, setOpenedEvent }: EventModalType) => {
  
-  // console.log("STATE: ", state);
+  console.log("STATE: ", state);
 
   const handleTitleChange = (event: React.FormEvent<HTMLInputElement>) => {
-    console.log("Title: ", event.currentTarget.value);
+    // console.log("Title: ", event.currentTarget.value);
     dispatch({ type: 'update-title', data: event.currentTarget.value });   
   }
 
   const handleDescChange = (event: React.FormEvent<HTMLInputElement>) => {
-    console.log("Desc: ", event.currentTarget.value);
+    // console.log("Desc: ", event.currentTarget.value);
     dispatch({ type: 'update-desc', data: event.currentTarget.value });
   }
 
   const closeModal = () => { 
     setShowModal(false); 
+    setOpenedEvent(undefined);
   }
 
   const saveEvent = () => {
@@ -31,6 +32,9 @@ export const EventModal:  ({ show, eventDay, setShowModal, setEventList }: Event
       // Check if the event being added atleast has a title
       setEventList([state]);
     }
+    // Clear the title and description after the event is saved
+    dispatch({ type: 'update-title', data: '' });
+    dispatch({ type: 'update-desc', data: ''});  
   }
   
   return show ? (
@@ -43,17 +47,20 @@ export const EventModal:  ({ show, eventDay, setShowModal, setEventList }: Event
        <div className="event-modal__close-btn" onClick={closeModal}>
           <span></span>
        </div>
+       <div className="event-modal__delete-btn" onClick={closeModal}>
+          <span><MdDeleteOutline className="delete-btn"/></span>
+       </div>
      </div>
 
      <div className="event-modal__form">
          <MdOutlineEvent className="event-modal__icon" />
          <div className="event-modal__field">
-           <input type="text" name="title" placeholder="Add Title" onChange={handleTitleChange}/>
+           <input type="text" name="title" placeholder="Add Title" defaultValue={openedEvent?.title} onChange={handleTitleChange}/>
          </div>
 
          <BsPencil className="event-modal__icon" />
          <div className="event-modal__field">
-           <input type="text" name="description" placeholder="Add Description" onChange={handleDescChange}/>
+           <input type="text" name="description" placeholder="Add Description" defaultValue={openedEvent?.desc} onChange={handleDescChange}/>
          </div>
          
          <AiOutlineClockCircle className="event-modal__icon" />

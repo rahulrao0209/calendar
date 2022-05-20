@@ -9,11 +9,8 @@ export const todayStyle = {
   'backgroundColor': '#e6a770'
 }
 
-export const Calendar = ({ data, state, eventList, setEventDay, setShowModal }: MainProps) => {
+export const Calendar = ({ data, state, eventList, setEventDay, setShowModal, setOpenedEvent }: MainProps) => {
   
-  // console.log("EVENT IN CALENDAR: ", state);
-  // console.log("EVENTS: ", eventList);
-
   const handleClick = (event: React.MouseEvent<HTMLDivElement> | React.MouseEvent<HTMLSpanElement>) => {
     if(typeof(event.currentTarget.dataset.value) === "string") {
       setEventDay(JSON.parse(event.currentTarget.dataset.value));
@@ -22,8 +19,14 @@ export const Calendar = ({ data, state, eventList, setEventDay, setShowModal }: 
   }
 
   const handleEventClick = (event: React.MouseEvent<HTMLDivElement>) => {
+    event.stopPropagation();
+
+    if(typeof(event.currentTarget.dataset.value) === "string") {
+      setOpenedEvent(JSON.parse(event.currentTarget.dataset.value))
+    }
+
+    setShowModal(true);
     console.log("Clicked on Event: ", event.currentTarget.dataset.value);
-    setShowModal(false);
   }
 
     return (

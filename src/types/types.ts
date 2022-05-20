@@ -25,6 +25,16 @@ export type CalendarMiniProps = {
   setData: React.Dispatch<React.SetStateAction<monthData[]>>;
 }
 
+export type CalendarProps = {
+  data: monthData[];
+  state: EventData;
+  eventList: EventData[] | undefined;
+  openedEvent: EventData | undefined;
+  setEventDay: React.Dispatch<React.SetStateAction<monthData>>;
+  setShowModal: React.Dispatch<React.SetStateAction<boolean>>;
+  setOpenedEvent: React.Dispatch<React.SetStateAction<EventData | undefined>>;
+}
+
 export type DrawerProps = {
   data: monthData[];
   setData: React.Dispatch<React.SetStateAction<monthData[]>>;
@@ -36,10 +46,12 @@ export type MainProps = {
   data: monthData[];
   state: EventData;
   eventList: EventData[] | undefined;
+  openedEvent: EventData | undefined;
   drawerClosed?: boolean;
   setData: React.Dispatch<React.SetStateAction<monthData[]>>;
   setShowModal: React.Dispatch<React.SetStateAction<boolean>>;
   setEventDay: React.Dispatch<React.SetStateAction<monthData>>;
+  setOpenedEvent: React.Dispatch<React.SetStateAction<EventData | undefined>>;
 }
 
 export type EventModalType = {
@@ -47,9 +59,11 @@ export type EventModalType = {
   eventDay: monthData;
   state: EventData;
   eventList: EventData[] | undefined;
+  openedEvent: EventData | undefined;
   dispatch: React.Dispatch<Action>;
   setShowModal: React.Dispatch<React.SetStateAction<boolean>>;
   setEventList: React.Dispatch<React.SetStateAction<EventData[] | undefined>>;
+  setOpenedEvent: React.Dispatch<React.SetStateAction<EventData | undefined>>;
 }
 
 export type EventData = {

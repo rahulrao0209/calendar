@@ -1,6 +1,4 @@
 @import "../../../public/index.scss";
-$border-color: #00000033;
-$hover-color: #ededed;
 
 .event-modal {
   position: absolute;
@@ -91,8 +89,26 @@ $hover-color: #ededed;
 
     &:hover > span,
     &:hover > span::before {
-      background-color: #fff;
+      background-color: $hover-color;
       cursor: pointer;
+    }
+  }
+
+  &__delete-btn {
+    color: #fff;
+
+    .delete-btn {
+      width: 2.5rem;
+      height: 2.5rem;
+
+      position: absolute;
+      top: 0.8rem;
+      right: 6rem;
+
+      &:hover {
+        cursor: pointer;
+        color: $hover-color;
+      }
     }
   }
 
