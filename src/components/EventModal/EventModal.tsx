@@ -1,5 +1,6 @@
 import React from "react";
 import type { EventModalType, EventData, Action } from "../../types/types";
+import { deleteEvent } from "../../utils/deleteEvent";
 import { MdOutlineEvent, MdDeleteOutline } from "react-icons/md";
 import { BsPencil } from "react-icons/bs";
 import { AiOutlineClockCircle } from "react-icons/ai";
@@ -7,8 +8,8 @@ import "./EventModal.scss";
 
 export const EventModal = ({ show, state, openedEvent, eventList, eventDay, dispatch, setShowModal, setEventList, setOpenedEvent }: EventModalType) => {
  
-  console.log("STATE: ", state);
-
+  // console.log("STATE: ", state);
+  
   const handleTitleChange = (event: React.FormEvent<HTMLInputElement>) => {
     // console.log("Title: ", event.currentTarget.value);
     dispatch({ type: 'update-title', data: event.currentTarget.value });   
@@ -24,14 +25,35 @@ export const EventModal = ({ show, state, openedEvent, eventList, eventDay, disp
     setOpenedEvent(undefined);
   }
 
+  const handleDeleteEvent = () => {
+    console.log("Deleting Event: ", openedEvent?.title);
+
+    // If an existing is event is open, delete it
+    if(openedEvent?.title) {
+      setEventList(deleteEvent(eventList, openedEvent));
+      closeModal();
+    }
+  }
+
   const saveEvent = () => {
     setShowModal(false);
+
+    // If an existing event is opened
+    if(openedEvent?.title) {
+      const newEventList = deleteEvent(eventList, openedEvent);
+      if(newEventList) {
+        setEventList([...newEventList, state]);
+        return;
+      }
+    }
+
     if(eventList && state.title) {
       setEventList([...eventList, state]);
     } else if(state.title){
       // Check if the event being added atleast has a title
       setEventList([state]);
     }
+
     // Clear the title and description after the event is saved
     dispatch({ type: 'update-title', data: '' });
     dispatch({ type: 'update-desc', data: ''});  
@@ -47,7 +69,7 @@ export const EventModal = ({ show, state, openedEvent, eventList, eventDay, disp
        <div className="event-modal__close-btn" onClick={closeModal}>
           <span></span>
        </div>
-       <div className="event-modal__delete-btn" onClick={closeModal}>
+       <div className="event-modal__delete-btn" onClick={handleDeleteEvent}>
           <span><MdDeleteOutline className="delete-btn"/></span>
        </div>
      </div>
