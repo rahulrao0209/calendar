@@ -16,4 +16,8 @@ body {
   color: $default-color;
   padding: 0.8rem;
   border-bottom: 0.1px solid $border-color;
+
+  & > span {
+    cursor: default;
+  }
 }

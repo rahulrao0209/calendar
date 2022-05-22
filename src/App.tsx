@@ -1,6 +1,6 @@
 import React, { useReducer, useState, useEffect } from "react";
 import { Header } from "./components/Header/Header";
-import type { monthData, EventData, Action } from "./types/types";
+import type { monthData, EventData } from "./types/types";
 import { Main } from "./components/Main/Main";
 import { EventModal } from "./components/EventModal/EventModal";
 import { getDayData } from "./utils/getDayData";
