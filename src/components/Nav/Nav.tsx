@@ -44,12 +44,12 @@ export const Nav = ({ data, setData }: NavProps) => {
                 <div className="nav__month">{data[data.length - 1]?.monthName} {data[data.length - 1]?.year}</div>
             </nav>
 
-            <nav className="nav__right">
+            {/* <nav className="nav__right">
                 <div className="nav__format">
                     Month
                     <span><IoCaretDown className="icon--down"/></span>
                 </div>
-            </nav>
+            </nav> */}
         </div>
     )
 }

@@ -38,16 +38,18 @@
     }
   }
 
-  &:hover {
-    background-color: rgb(237, 237, 237);
-    cursor: pointer;
-  }
+  @media only screen and (min-width: 600px) {
+    &:hover {
+      background-color: rgb(237, 237, 237);
+      cursor: pointer;
+    }
 
-  &:hover > &__hamburger::before {
-    transform: translateY(0.2rem);
-  }
+    &:hover > &__hamburger::before {
+      transform: translateY(0.2rem);
+    }
 
-  &:hover > &__hamburger::after {
-    transform: translateY(-0.2rem);
+    &:hover > &__hamburger::after {
+      transform: translateY(-0.2rem);
+    }
   }
 }
