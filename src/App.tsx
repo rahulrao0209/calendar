@@ -5,6 +5,7 @@ import { Main } from "./components/Main/Main";
 import { EventModal } from "./components/EventModal/EventModal";
 import { getDayData } from "./utils/getDayData";
 import { eventReducer } from "./utils/eventReducer";
+import { useLocalStorage } from "./hooks/useLocalStorage";
 
 const initialEventState: EventData = {
     title: "",
@@ -29,19 +30,8 @@ export const App = () => {
       dispatch({ type: 'update-date', data: eventDay });
     }, [eventDay])
 
-    // Retrieve events from the local storage
-    useEffect(() => {
-      const savedEvents = localStorage.getItem('eventlist');
-      if(typeof(savedEvents) === 'string' && savedEvents != undefined && savedEvents != 'undefined') {
-        console.log('saved events: ', JSON.parse(savedEvents));
-        setEventList(JSON.parse(savedEvents));
-      }
-    }, [])
-
-    // Save events to local storage
-    useEffect(() => {
-      if(eventList) { localStorage.setItem('eventlist', JSON.stringify(eventList)); }
-    }, [eventList])
+    // Save and retrieve events from the local storage
+    useLocalStorage(eventList, setEventList);
 
     return (
         <div>
