@@ -54,7 +54,7 @@
 
     &:hover > span,
     &:hover > span::before {
-      background-color: #000;
+      background-color: $hover-color;
       cursor: pointer;
     }
   }
