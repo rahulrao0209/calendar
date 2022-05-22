@@ -6,6 +6,7 @@ import { EventModal } from "./components/EventModal/EventModal";
 import { getDayData } from "./utils/getDayData";
 import { eventReducer } from "./utils/eventReducer";
 import { useLocalStorage } from "./hooks/useLocalStorage";
+import { useViewport } from "./hooks/useViewport";
 
 const initialEventState: EventData = {
     title: "",
@@ -21,7 +22,8 @@ export const App = () => {
     const [eventList, setEventList] = useState<EventData[]>();
     const [state, dispatch] = useReducer(eventReducer, initialEventState);
     const [openedEvent, setOpenedEvent] = useState<EventData>();
-    
+    const viewportWidth = useViewport();
+
     // Create the props
     const nav = { data, setData }
     const hamburger = { drawerClosed, setDrawerClosed }
@@ -29,6 +31,11 @@ export const App = () => {
     useEffect(() => {
       dispatch({ type: 'update-date', data: eventDay });
     }, [eventDay])
+
+    // Drawer should be open or close depending on the viewport
+    useEffect(() => {
+      setDrawerClosed(viewportWidth > 760 ? false: true);
+    }, [viewportWidth])
 
     // Save and retrieve events from the local storage
     useLocalStorage(eventList, setEventList);
