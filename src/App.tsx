@@ -29,6 +29,20 @@ export const App = () => {
       dispatch({ type: 'update-date', data: eventDay });
     }, [eventDay])
 
+    // Retrieve events from the local storage
+    useEffect(() => {
+      const savedEvents = localStorage.getItem('eventlist');
+      if(typeof(savedEvents) === 'string' && savedEvents != undefined && savedEvents != 'undefined') {
+        console.log('saved events: ', JSON.parse(savedEvents));
+        setEventList(JSON.parse(savedEvents));
+      }
+    }, [])
+
+    // Save events to local storage
+    useEffect(() => {
+      if(eventList) { localStorage.setItem('eventlist', JSON.stringify(eventList)); }
+    }, [eventList])
+
     return (
         <div>
            <Header nav={nav} hamburger={hamburger} />

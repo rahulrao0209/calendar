@@ -54,6 +54,9 @@ export const EventModal = ({ show, state, openedEvent, eventList, eventDay, disp
       setEventList([state]);
     }
 
+    // Save eventlist to local storage
+    // localStorage.setItem('eventlist',JSON.stringify(eventList));
+
     // Clear the title and description after the event is saved
     dispatch({ type: 'update-title', data: '' });
     dispatch({ type: 'update-desc', data: ''});  
