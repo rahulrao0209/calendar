@@ -11,8 +11,6 @@ import "./EventModal.scss";
 
 export const EventModal = ({ show, state, openedEvent, eventList, eventDay, dispatch, setShowModal, setEventList, setOpenedEvent }: EventModalType) => {
  
-  // console.log("STATE: ", state);
-  const [selectedColor, setSelectedColor] = useState("color-1");
   const checkedIcon = <IoIosCheckmark className="event-modal__checked-icon" />;
   
   const handleTitleChange = (event: React.FormEvent<HTMLInputElement>) => {
@@ -26,8 +24,7 @@ export const EventModal = ({ show, state, openedEvent, eventList, eventDay, disp
   }
 
   const handleColorSelection = (event: React.BaseSyntheticEvent<MouseEvent>) => {
-    console.log("COLOR SELECTED: ", event.target.dataset.color);
-    setSelectedColor(event.target.dataset.color);
+    dispatch({ type: 'update-color', data: event.target.dataset.color});
   }
 
   const closeModal = () => { 
@@ -66,7 +63,8 @@ export const EventModal = ({ show, state, openedEvent, eventList, eventDay, disp
 
     // Clear the title and description after the event is saved
     dispatch({ type: 'update-title', data: '' });
-    dispatch({ type: 'update-desc', data: ''});  
+    dispatch({ type: 'update-desc', data: ''});
+    dispatch({ type: 'update-color', data: '#e2a601'});    
   }
   
   return show ? (
@@ -103,11 +101,11 @@ export const EventModal = ({ show, state, openedEvent, eventList, eventDay, disp
          <VscBookmark className="event-modal__icon" />
          <div className="event__colors" onClick={handleColorSelection}>
 
-          <span data-color="color-1"> { selectedColor === "color-1" ? checkedIcon : null } </span>
-          <span data-color="color-2"> { selectedColor === "color-2" ? checkedIcon : null } </span>
-          <span data-color="color-3"> { selectedColor === "color-3" ? checkedIcon : null } </span>
-          <span data-color="color-4"> { selectedColor === "color-4" ? checkedIcon : null } </span>
-          <span data-color="color-5"> { selectedColor === "color-5" ? checkedIcon : null } </span>
+          <span data-color="#e2a601"> { state.color === "#e2a601" ? checkedIcon : null } </span>
+          <span data-color="#dd5e89"> { state.color === "#dd5e89" ? checkedIcon : null } </span>
+          <span data-color="#4389a2"> { state.color === "#4389a2" ? checkedIcon : null } </span>
+          <span data-color="#2bc0e4"> { state.color === "#2bc0e4" ? checkedIcon : null } </span>
+          <span data-color="#12d8fa"> { state.color === "#12d8fa" ? checkedIcon : null } </span>
          </div>
 
          <button onClick={saveEvent}>

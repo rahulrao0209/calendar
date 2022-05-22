@@ -11,7 +11,8 @@ import { useViewport } from "./hooks/useViewport";
 const initialEventState: EventData = {
     title: "",
     desc: "",
-    date: getDayData()
+    date: getDayData(),
+    color: "#e2a601"
 };
 
 export const App = () => {

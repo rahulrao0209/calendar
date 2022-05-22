@@ -70,9 +70,11 @@ export type EventData = {
   title: string;
   desc: string;
   date: monthData;
+  color: string;
 }
 
 export type Action =
  | { type: 'update-title', data: string }
  | { type: 'update-desc', data: string }
  | { type: 'update-date', data: monthData }
+ | { type: 'update-color', data: string }

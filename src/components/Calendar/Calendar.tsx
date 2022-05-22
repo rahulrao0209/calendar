@@ -34,7 +34,6 @@ export const Calendar = ({ data, state, eventList, setEventDay, setShowModal, se
           {data.map((item, index) => {
             let isCurrentDayToday = isToday(item);
             let matchingEvents = findMatchingEvents(eventList, item);
-            
              return (
                <div className="calendar__cell" key={index} onClick={handleClick} data-value={JSON.stringify(item)}>
                  <span className="calendar__day">{item.dayName}</span>
@@ -44,7 +43,10 @@ export const Calendar = ({ data, state, eventList, setEventDay, setShowModal, se
                   <div
                     key={index}
                     data-value={JSON.stringify(event)}
-                    onClick={handleEventClick}>{event.title}
+                    onClick={handleEventClick}
+                    style={{ 'backgroundColor': event.color }}
+                  >
+                      {event.title}
                   </div>) }
                  </div>
                </div>
