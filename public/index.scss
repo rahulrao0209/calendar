@@ -2,12 +2,18 @@
 @import url("https://fonts.googleapis.com/css2?family=Raleway:wght@100;200;400&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Noto+Sans:wght@100;200;400;500&display=swap");
 
+// General colors
 $default-color: #333333;
 $primary-color: #e6a770;
 $border-color: #00000033;
 $hover-color: #ededed;
+
+// Event colors
 $event-color-1: #e2a601;
-$event-color-2: #ea384d;
+$event-color-2: #dd5e89;
+$event-color-3: #4389a2;
+$event-color-4: #2bc0e4;
+$event-color-5: #12d8fa;
 
 * {
   margin: 0;

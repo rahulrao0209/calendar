@@ -1,14 +1,19 @@
-import React from "react";
-import type { EventModalType, EventData, Action } from "../../types/types";
+import React, { useState } from "react";
+import type { EventModalType } from "../../types/types";
 import { deleteEvent } from "../../utils/deleteEvent";
 import { MdOutlineEvent, MdDeleteOutline } from "react-icons/md";
-import { BsPencil } from "react-icons/bs";
+import { BsPencil, BsCheck2 } from "react-icons/bs";
+import { VscBookmark } from "react-icons/vsc";
 import { AiOutlineClockCircle } from "react-icons/ai";
+import { IoIosCheckmark } from "react-icons/io";
+
 import "./EventModal.scss";
 
 export const EventModal = ({ show, state, openedEvent, eventList, eventDay, dispatch, setShowModal, setEventList, setOpenedEvent }: EventModalType) => {
  
   // console.log("STATE: ", state);
+  const [selectedColor, setSelectedColor] = useState("color-1");
+  const checkedIcon = <IoIosCheckmark className="event-modal__checked-icon" />;
   
   const handleTitleChange = (event: React.FormEvent<HTMLInputElement>) => {
     // console.log("Title: ", event.currentTarget.value);
@@ -18,6 +23,11 @@ export const EventModal = ({ show, state, openedEvent, eventList, eventDay, disp
   const handleDescChange = (event: React.FormEvent<HTMLInputElement>) => {
     // console.log("Desc: ", event.currentTarget.value);
     dispatch({ type: 'update-desc', data: event.currentTarget.value });
+  }
+
+  const handleColorSelection = (event: React.BaseSyntheticEvent<MouseEvent>) => {
+    console.log("COLOR SELECTED: ", event.target.dataset.color);
+    setSelectedColor(event.target.dataset.color);
   }
 
   const closeModal = () => { 
@@ -88,6 +98,16 @@ export const EventModal = ({ show, state, openedEvent, eventList, eventDay, disp
          <AiOutlineClockCircle className="event-modal__icon" />
          <div className="event-modal__field">
            <span>{eventDay.monthName} {eventDay.day}, {eventDay.year}</span>
+         </div>
+
+         <VscBookmark className="event-modal__icon" />
+         <div className="event__colors" onClick={handleColorSelection}>
+
+          <span data-color="color-1"> { selectedColor === "color-1" ? checkedIcon : null } </span>
+          <span data-color="color-2"> { selectedColor === "color-2" ? checkedIcon : null } </span>
+          <span data-color="color-3"> { selectedColor === "color-3" ? checkedIcon : null } </span>
+          <span data-color="color-4"> { selectedColor === "color-4" ? checkedIcon : null } </span>
+          <span data-color="color-5"> { selectedColor === "color-5" ? checkedIcon : null } </span>
          </div>
 
          <button onClick={saveEvent}>
