@@ -11,6 +11,7 @@ import "./EventModal.scss";
 
 export const EventModal = ({ show, state, openedEvent, eventList, eventDay, dispatch, setShowModal, setEventList, setOpenedEvent }: EventModalType) => {
  
+  console.log("STATE: ", state);
   const checkedIcon = <IoIosCheckmark className="event-modal__checked-icon" />;
   
   const handleTitleChange = (event: React.FormEvent<HTMLInputElement>) => {
@@ -24,6 +25,7 @@ export const EventModal = ({ show, state, openedEvent, eventList, eventDay, disp
   }
 
   const handleColorSelection = (event: React.BaseSyntheticEvent<MouseEvent>) => {
+    console.log("Selected Color: ", event.target.dataset.color);
     dispatch({ type: 'update-color', data: event.target.dataset.color});
   }
 
@@ -104,7 +106,7 @@ export const EventModal = ({ show, state, openedEvent, eventList, eventDay, disp
           <span data-color="#e2a601"> { state.color === "#e2a601" ? checkedIcon : null } </span>
           <span data-color="#dd5e89"> { state.color === "#dd5e89" ? checkedIcon : null } </span>
           <span data-color="#4389a2"> { state.color === "#4389a2" ? checkedIcon : null } </span>
-          <span data-color="#2bc0e4"> { state.color === "#2bc0e4" ? checkedIcon : null } </span>
+          <span data-color="#fe8c00"> { state.color === "#fe8c00" ? checkedIcon : null } </span>
           <span data-color="#12d8fa"> { state.color === "#12d8fa" ? checkedIcon : null } </span>
          </div>
 

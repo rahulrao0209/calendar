@@ -22,6 +22,7 @@ export const Calendar = ({ data, state, eventList, setEventDay, setShowModal, se
     event.stopPropagation();
 
     if(typeof(event.currentTarget.dataset.value) === "string") {
+      console.log("Clicked on event: ", event.currentTarget.dataset.value);
       setOpenedEvent(JSON.parse(event.currentTarget.dataset.value))
     }
 
