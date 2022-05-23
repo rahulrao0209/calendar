@@ -23,7 +23,10 @@ export const App = () => {
     const [eventList, setEventList] = useState<EventData[]>();
     const [state, dispatch] = useReducer(eventReducer, initialEventState);
     const [openedEvent, setOpenedEvent] = useState<EventData>();
+    const [eventColors, setEventColors] = useState<string[]>([]);
     const viewportWidth = useViewport();
+
+    // console.log("COLORS IN USE: ", eventColors);
 
     // Create the props
     const nav = { data, setData }
@@ -57,6 +60,12 @@ export const App = () => {
       }
     }, [openedEvent])
 
+    // Update our list of colors whenever the eventlist changes
+    useEffect(() => {
+      const colors = new Set(eventList?.map((item) => item.color));
+      setEventColors([...colors]);
+    }, [eventList])
+
     // Save and retrieve events from the local storage
     useLocalStorage(eventList, setEventList);
 
@@ -69,6 +78,7 @@ export const App = () => {
              eventList={eventList}
              openedEvent={openedEvent}
              drawerClosed={drawerClosed}
+             eventColors={eventColors}
              setData={setData}
              setShowModal={setShowModal}
              setEventDay={setEventDay} 

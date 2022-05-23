@@ -37,6 +37,7 @@ export type CalendarProps = {
 
 export type DrawerProps = {
   data: monthData[];
+  eventColors: string[];
   setData: React.Dispatch<React.SetStateAction<monthData[]>>;
   setShowModal: React.Dispatch<React.SetStateAction<boolean>>;
   setEventDay: React.Dispatch<React.SetStateAction<monthData>>;
@@ -48,6 +49,7 @@ export type MainProps = {
   eventList: EventData[] | undefined;
   openedEvent: EventData | undefined;
   drawerClosed?: boolean;
+  eventColors: string[];
   setData: React.Dispatch<React.SetStateAction<monthData[]>>;
   setShowModal: React.Dispatch<React.SetStateAction<boolean>>;
   setEventDay: React.Dispatch<React.SetStateAction<monthData>>;

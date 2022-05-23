@@ -108,7 +108,6 @@ export const EventModal = ({ show, state, openedEvent, eventList, dispatch, setS
 
          <VscBookmark className="event-modal__icon" />
          <div className="event__colors" onClick={handleColorSelection}>
-
           <span data-color="#e2a601"> { state.color === "#e2a601" ? checkedIcon : null } </span>
           <span data-color="#dd5e89"> { state.color === "#dd5e89" ? checkedIcon : null } </span>
           <span data-color="#4389a2"> { state.color === "#4389a2" ? checkedIcon : null } </span>
