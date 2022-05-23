@@ -11,7 +11,8 @@ import { useViewport } from "./hooks/useViewport";
 const initialEventState: EventData = {
     title: "",
     desc: "",
-    date: getDayData()
+    date: getDayData(),
+    color: "#e2a601"
 };
 
 export const App = () => {
@@ -36,6 +37,25 @@ export const App = () => {
     useEffect(() => {
       setDrawerClosed(viewportWidth > 760 ? false: true);
     }, [viewportWidth])
+
+    // Update the state if an existing event is opened
+    useEffect(() => {
+      if(openedEvent?.title) {
+        dispatch({ type: 'update-title', data: openedEvent.title });
+      }
+
+      if(openedEvent?.date) {
+        dispatch({ type: 'update-desc', data: openedEvent.desc })
+      }
+
+      if(openedEvent?.date) {
+        dispatch({ type: 'update-date', data: openedEvent.date });
+      }
+
+      if(openedEvent?.color) {
+        dispatch({ type: 'update-color', data: openedEvent.color });
+      }
+    }, [openedEvent])
 
     // Save and retrieve events from the local storage
     useLocalStorage(eventList, setEventList);

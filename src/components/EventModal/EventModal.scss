@@ -196,4 +196,55 @@
     font-size: 2.2rem;
     color: #6e6e6e;
   }
+
+  // Event colors
+  .event__colors {
+    align-self: center;
+    justify-self: left;
+
+    & > span {
+      display: inline-block;
+      position: relative;
+
+      width: 2.5rem;
+      height: 2.5rem;
+
+      margin: 0 1rem;
+
+      border-radius: 100%;
+
+      &:hover {
+        cursor: pointer;
+      }
+    }
+
+    // Style the children with different colors
+    & > span:nth-child(1) {
+      background-color: $event-color-1;
+    }
+
+    & > span:nth-child(2) {
+      background-color: $event-color-2;
+    }
+
+    & > span:nth-child(3) {
+      background-color: $event-color-3;
+    }
+
+    & > span:nth-child(4) {
+      background-color: $event-color-4;
+    }
+
+    & > span:nth-child(5) {
+      background-color: $event-color-5;
+    }
+
+    // Checked icon
+    .event-modal__checked-icon {
+      color: #fff;
+
+      position: absolute;
+      top: -1px;
+    }
+  }
 }

@@ -1,14 +1,17 @@
-import React from "react";
-import type { EventModalType, EventData, Action } from "../../types/types";
+import React, { useState } from "react";
+import type { EventModalType } from "../../types/types";
 import { deleteEvent } from "../../utils/deleteEvent";
 import { MdOutlineEvent, MdDeleteOutline } from "react-icons/md";
 import { BsPencil } from "react-icons/bs";
+import { VscBookmark } from "react-icons/vsc";
 import { AiOutlineClockCircle } from "react-icons/ai";
+import { IoIosCheckmark } from "react-icons/io";
+
 import "./EventModal.scss";
 
-export const EventModal = ({ show, state, openedEvent, eventList, eventDay, dispatch, setShowModal, setEventList, setOpenedEvent }: EventModalType) => {
+export const EventModal = ({ show, state, openedEvent, eventList, dispatch, setShowModal, setEventList, setOpenedEvent }: EventModalType) => {
  
-  // console.log("STATE: ", state);
+  const checkedIcon = <IoIosCheckmark className="event-modal__checked-icon" />;
   
   const handleTitleChange = (event: React.FormEvent<HTMLInputElement>) => {
     // console.log("Title: ", event.currentTarget.value);
@@ -20,9 +23,22 @@ export const EventModal = ({ show, state, openedEvent, eventList, eventDay, disp
     dispatch({ type: 'update-desc', data: event.currentTarget.value });
   }
 
+  const handleColorSelection = (event: React.BaseSyntheticEvent<MouseEvent>) => {
+    console.log("Selected Color: ", event.target.dataset.color);
+    dispatch({ type: 'update-color', data: event.target.dataset.color});
+  }
+
+  const resetModalData = () => {
+    // Clear the title and description and set color to default after the event is saved
+    dispatch({ type: 'update-title', data: '' });
+    dispatch({ type: 'update-desc', data: ''});
+    dispatch({ type: 'update-color', data: '#e2a601'});  
+  }
+
   const closeModal = () => { 
     setShowModal(false); 
     setOpenedEvent(undefined);
+    resetModalData();
   }
 
   const handleDeleteEvent = () => {
@@ -32,6 +48,7 @@ export const EventModal = ({ show, state, openedEvent, eventList, eventDay, disp
     if(openedEvent?.title) {
       setEventList(deleteEvent(eventList, openedEvent));
       closeModal();
+      resetModalData();
     }
   }
 
@@ -43,6 +60,7 @@ export const EventModal = ({ show, state, openedEvent, eventList, eventDay, disp
       const newEventList = deleteEvent(eventList, openedEvent);
       if(newEventList) {
         setEventList([...newEventList, state]);
+        resetModalData();
         return;
       }
     }
@@ -54,9 +72,7 @@ export const EventModal = ({ show, state, openedEvent, eventList, eventDay, disp
       setEventList([state]);
     }
 
-    // Clear the title and description after the event is saved
-    dispatch({ type: 'update-title', data: '' });
-    dispatch({ type: 'update-desc', data: ''});  
+    resetModalData();   
   }
   
   return show ? (
@@ -87,7 +103,17 @@ export const EventModal = ({ show, state, openedEvent, eventList, eventDay, disp
          
          <AiOutlineClockCircle className="event-modal__icon" />
          <div className="event-modal__field">
-           <span>{eventDay.monthName} {eventDay.day}, {eventDay.year}</span>
+           <span>{state.date.monthName} {state.date.day}, {state.date.year}</span>
+         </div>
+
+         <VscBookmark className="event-modal__icon" />
+         <div className="event__colors" onClick={handleColorSelection}>
+
+          <span data-color="#e2a601"> { state.color === "#e2a601" ? checkedIcon : null } </span>
+          <span data-color="#dd5e89"> { state.color === "#dd5e89" ? checkedIcon : null } </span>
+          <span data-color="#4389a2"> { state.color === "#4389a2" ? checkedIcon : null } </span>
+          <span data-color="#fe8c00"> { state.color === "#fe8c00" ? checkedIcon : null } </span>
+          <span data-color="#12d8fa"> { state.color === "#12d8fa" ? checkedIcon : null } </span>
          </div>
 
          <button onClick={saveEvent}>
