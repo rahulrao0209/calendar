@@ -9,9 +9,8 @@ import { IoIosCheckmark } from "react-icons/io";
 
 import "./EventModal.scss";
 
-export const EventModal = ({ show, state, openedEvent, eventList, eventDay, dispatch, setShowModal, setEventList, setOpenedEvent }: EventModalType) => {
+export const EventModal = ({ show, state, openedEvent, eventList, dispatch, setShowModal, setEventList, setOpenedEvent }: EventModalType) => {
  
-  console.log("STATE: ", state);
   const checkedIcon = <IoIosCheckmark className="event-modal__checked-icon" />;
   
   const handleTitleChange = (event: React.FormEvent<HTMLInputElement>) => {
@@ -29,9 +28,17 @@ export const EventModal = ({ show, state, openedEvent, eventList, eventDay, disp
     dispatch({ type: 'update-color', data: event.target.dataset.color});
   }
 
+  const resetModalData = () => {
+    // Clear the title and description and set color to default after the event is saved
+    dispatch({ type: 'update-title', data: '' });
+    dispatch({ type: 'update-desc', data: ''});
+    dispatch({ type: 'update-color', data: '#e2a601'});  
+  }
+
   const closeModal = () => { 
     setShowModal(false); 
     setOpenedEvent(undefined);
+    resetModalData();
   }
 
   const handleDeleteEvent = () => {
@@ -41,6 +48,7 @@ export const EventModal = ({ show, state, openedEvent, eventList, eventDay, disp
     if(openedEvent?.title) {
       setEventList(deleteEvent(eventList, openedEvent));
       closeModal();
+      resetModalData();
     }
   }
 
@@ -52,6 +60,7 @@ export const EventModal = ({ show, state, openedEvent, eventList, eventDay, disp
       const newEventList = deleteEvent(eventList, openedEvent);
       if(newEventList) {
         setEventList([...newEventList, state]);
+        resetModalData();
         return;
       }
     }
@@ -63,10 +72,7 @@ export const EventModal = ({ show, state, openedEvent, eventList, eventDay, disp
       setEventList([state]);
     }
 
-    // Clear the title and description after the event is saved
-    dispatch({ type: 'update-title', data: '' });
-    dispatch({ type: 'update-desc', data: ''});
-    dispatch({ type: 'update-color', data: '#e2a601'});    
+    resetModalData();   
   }
   
   return show ? (
