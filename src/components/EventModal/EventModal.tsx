@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import type { EventModalType } from "../../types/types";
 import { deleteEvent } from "../../utils/deleteEvent";
 import { MdOutlineEvent, MdDeleteOutline } from "react-icons/md";
-import { BsPencil, BsCheck2 } from "react-icons/bs";
+import { BsPencil } from "react-icons/bs";
 import { VscBookmark } from "react-icons/vsc";
 import { AiOutlineClockCircle } from "react-icons/ai";
 import { IoIosCheckmark } from "react-icons/io";
@@ -97,7 +97,7 @@ export const EventModal = ({ show, state, openedEvent, eventList, eventDay, disp
          
          <AiOutlineClockCircle className="event-modal__icon" />
          <div className="event-modal__field">
-           <span>{eventDay.monthName} {eventDay.day}, {eventDay.year}</span>
+           <span>{state.date.monthName} {state.date.day}, {state.date.year}</span>
          </div>
 
          <VscBookmark className="event-modal__icon" />
