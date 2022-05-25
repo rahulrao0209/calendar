@@ -38,6 +38,8 @@ export type CalendarProps = {
 export type DrawerProps = {
   data: monthData[];
   eventColors: string[];
+  displayEventsByColor: ColorFilterData;
+  setDisplayEventsByColor: React.Dispatch<ColorAction>;
   setData: React.Dispatch<React.SetStateAction<monthData[]>>;
   setShowModal: React.Dispatch<React.SetStateAction<boolean>>;
   setEventDay: React.Dispatch<React.SetStateAction<monthData>>;
@@ -50,6 +52,8 @@ export type MainProps = {
   openedEvent: EventData | undefined;
   drawerClosed?: boolean;
   eventColors: string[];
+  displayEventsByColor: ColorFilterData;
+  setDisplayEventsByColor: React.Dispatch<ColorAction>;
   setData: React.Dispatch<React.SetStateAction<monthData[]>>;
   setShowModal: React.Dispatch<React.SetStateAction<boolean>>;
   setEventDay: React.Dispatch<React.SetStateAction<monthData>>;
@@ -80,3 +84,19 @@ export type Action =
  | { type: 'update-desc', data: string }
  | { type: 'update-date', data: monthData }
  | { type: 'update-color', data: string }
+
+
+ export type ColorFilterData = {
+  yellow: boolean;
+  pink: boolean;
+  green: boolean;
+  orange: boolean;
+  blue: boolean;
+ }
+
+ export type ColorAction =
+ | { type: 'update-yellow', data: boolean }
+ | { type: 'update-pink', data: boolean }
+ | { type: 'update-green', data: boolean }
+ | { type: 'update-orange', data: boolean }
+ | { type: 'update-blue', data: boolean }
