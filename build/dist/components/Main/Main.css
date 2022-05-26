@@ -1,0 +1,9 @@
+.main {
+  display: grid;
+  grid-template-columns: 25rem 1fr;
+}
+
+.main--closed {
+  display: grid;
+  grid-template-columns: 0 1fr;
+}

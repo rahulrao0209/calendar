@@ -1,0 +1,215 @@
+@import url("https://fonts.googleapis.com/css2?family=Pacifico&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Raleway:wght@100;200;400&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans:wght@100;200;400;500&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html {
+  font-size: 62.5%;
+  box-sizing: border-box;
+}
+@media only screen and (max-width: 1200px) {
+  html {
+    font-size: 58%;
+  }
+}
+@media only screen and (max-width: 995px) {
+  html {
+    font-size: 55%;
+  }
+}
+@media only screen and (max-width: 900px) {
+  html {
+    font-size: 52%;
+  }
+}
+
+.event-modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  min-width: 45rem;
+  border-radius: 8px;
+  box-shadow: 4px 12px 16px rgba(0, 0, 0, 0.2);
+  background-color: #fff;
+}
+@media only screen and (max-width: 400px) {
+  .event-modal {
+    min-width: 40rem;
+  }
+}
+.event-modal__header {
+  width: 100%;
+  height: 4rem;
+  border-radius: 8px 8px 0 0;
+  background-color: #e6a770;
+}
+.event-modal__menu-btn {
+  width: 4rem;
+  height: 4rem;
+  padding: 0.5rem;
+  position: absolute;
+  top: 0;
+  left: 2rem;
+}
+.event-modal__menu-btn > span {
+  position: absolute;
+  top: 1.8rem;
+  left: 0.8rem;
+  width: 2.5rem;
+  height: 0.08rem;
+  background-color: #fff;
+}
+.event-modal__menu-btn > span::before {
+  content: "";
+  position: absolute;
+  top: 0.5rem;
+  width: inherit;
+  height: inherit;
+  background-color: #fff;
+}
+.event-modal__menu-btn:hover > span, .event-modal__menu-btn:hover > span::before {
+  background-color: #ededed;
+  cursor: pointer;
+}
+.event-modal__close-btn {
+  width: 4rem;
+  height: 4rem;
+  padding: 0.5rem;
+  position: absolute;
+  top: 0;
+  right: 2rem;
+}
+.event-modal__close-btn > span {
+  position: absolute;
+  top: 2.1rem;
+  right: 1rem;
+  width: 2rem;
+  height: 0.08rem;
+  background-color: #fff;
+  transform: rotate(45deg);
+}
+.event-modal__close-btn > span::before {
+  content: "";
+  position: absolute;
+  width: inherit;
+  height: inherit;
+  background-color: inherit;
+  transform: rotate(90deg);
+}
+.event-modal__close-btn:hover > span, .event-modal__close-btn:hover > span::before {
+  background-color: #ededed;
+  cursor: pointer;
+}
+.event-modal__delete-btn {
+  color: #fff;
+}
+.event-modal__delete-btn .delete-btn {
+  width: 2.5rem;
+  height: 2.5rem;
+  position: absolute;
+  top: 0.8rem;
+  right: 6rem;
+}
+.event-modal__delete-btn .delete-btn:hover {
+  cursor: pointer;
+  color: #ededed;
+}
+.event-modal__form {
+  display: grid;
+  grid-template-columns: 1fr 80%;
+}
+.event-modal__form > button {
+  grid-column: 2/3;
+  justify-self: right;
+  width: 8rem;
+  margin: 2rem 0;
+  margin-right: 8rem;
+  border: none;
+  padding: 1rem;
+  background-color: #e6a770;
+  color: #fff;
+  font-weight: bold;
+  border-radius: 4px;
+  cursor: pointer;
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+  transition: transform 0.2s;
+}
+.event-modal__form > button:hover {
+  background-color: #de8c45;
+}
+.event-modal__form > button:focus {
+  outline: none;
+}
+.event-modal__form > button:active {
+  box-shadow: 0px 2px 12px rgba(0, 0, 0, 0.2);
+  transform: translateY(4px);
+}
+.event-modal__field > input {
+  width: 80%;
+  height: 4rem;
+  margin: 1.5rem 0;
+  padding: 0.5rem;
+  border: none;
+  border-bottom: 2.5px solid #cecccc;
+  font-size: 1.6rem;
+  font-family: "Noto Sans", sans-serif;
+  color: #333333;
+}
+.event-modal__field > input:focus {
+  outline: none;
+  border-bottom: 2.5px solid #e6a770;
+}
+.event-modal__field > span {
+  display: inline-block;
+  border: none;
+  font-family: "Noto Sans", sans-serif;
+  font-size: 1.5rem;
+  margin-bottom: 2rem;
+  color: #666666;
+}
+.event-modal__icon {
+  align-self: center;
+  justify-self: center;
+  font-size: 2.2rem;
+  color: #6e6e6e;
+}
+.event-modal .event__colors {
+  align-self: center;
+  justify-self: left;
+}
+.event-modal .event__colors > span {
+  display: inline-block;
+  position: relative;
+  width: 2.5rem;
+  height: 2.5rem;
+  margin: 0 1rem;
+  border-radius: 100%;
+}
+.event-modal .event__colors > span:hover {
+  cursor: pointer;
+}
+.event-modal .event__colors > span:nth-child(1) {
+  background-color: #e2a601;
+}
+.event-modal .event__colors > span:nth-child(2) {
+  background-color: #dd5e89;
+}
+.event-modal .event__colors > span:nth-child(3) {
+  background-color: #4389a2;
+}
+.event-modal .event__colors > span:nth-child(4) {
+  background-color: #fe8c00;
+}
+.event-modal .event__colors > span:nth-child(5) {
+  background-color: #12d8fa;
+}
+.event-modal .event__colors .event-modal__checked-icon {
+  color: #fff;
+  position: absolute;
+  top: -1px;
+}

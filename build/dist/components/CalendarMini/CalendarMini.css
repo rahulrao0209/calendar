@@ -1,0 +1,106 @@
+@import url("https://fonts.googleapis.com/css2?family=Pacifico&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Raleway:wght@100;200;400&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans:wght@100;200;400;500&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html {
+  font-size: 62.5%;
+  box-sizing: border-box;
+}
+@media only screen and (max-width: 1200px) {
+  html {
+    font-size: 58%;
+  }
+}
+@media only screen and (max-width: 995px) {
+  html {
+    font-size: 55%;
+  }
+}
+@media only screen and (max-width: 900px) {
+  html {
+    font-size: 52%;
+  }
+}
+
+.calendar-mini {
+  font-family: "Noto Sans", sans-serif;
+  font-size: 1.5rem;
+  width: 90%;
+}
+.calendar-mini__nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0 1rem;
+  width: 100%;
+}
+.calendar-mini__nav-controls {
+  margin-block: 0.9rem 0;
+}
+.calendar-mini__nav-controls > span {
+  position: relative;
+  display: inline-block;
+  padding: 1rem;
+  border-radius: 100%;
+  width: 3.5rem;
+  height: 3.5rem;
+}
+.calendar-mini__nav-controls .icon--prev,
+.calendar-mini__nav-controls .icon--next {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.calendar-mini__nav-controls--previous:hover, .calendar-mini__nav-controls--next:hover {
+  background-color: #ededed;
+  cursor: pointer;
+}
+.calendar-mini__month {
+  cursor: default;
+}
+.calendar-mini__week {
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-evenly;
+  color: #535353;
+  text-align: center;
+}
+.calendar-mini__week > span {
+  display: inline-block;
+  width: 3rem;
+}
+.calendar-mini__calendar {
+  display: grid;
+  margin: 0.5rem auto;
+  grid-template-columns: repeat(7, 1fr);
+  grid-row-gap: 0.8rem;
+  justify-items: center;
+}
+.calendar-mini__cell {
+  position: relative;
+  font-size: 1.2rem;
+  font-weight: 400;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 100%;
+  text-align: center;
+}
+.calendar-mini__cell > span {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  position: absolute;
+}
+.calendar-mini__cell:hover {
+  cursor: pointer;
+  background-color: rgb(237, 237, 237);
+}
+.calendar-mini__cell--clicked {
+  background-color: #f5dcc7;
+}

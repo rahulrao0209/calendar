@@ -1,0 +1,10 @@
+// [snowpack] add styles to the page (skip if no document exists)
+if (typeof document !== 'undefined') {
+  const code = "@import url(\"https://fonts.googleapis.com/css2?family=Pacifico&display=swap\");\n@import url(\"https://fonts.googleapis.com/css2?family=Raleway:wght@100;200;400&display=swap\");\n@import url(\"https://fonts.googleapis.com/css2?family=Noto+Sans:wght@100;200;400;500&display=swap\");\n* {\n  margin: 0;\n  padding: 0;\n  box-sizing: inherit;\n}\n\nhtml {\n  font-size: 62.5%;\n  box-sizing: border-box;\n}\n@media only screen and (max-width: 1200px) {\n  html {\n    font-size: 58%;\n  }\n}\n@media only screen and (max-width: 995px) {\n  html {\n    font-size: 55%;\n  }\n}\n@media only screen and (max-width: 900px) {\n  html {\n    font-size: 52%;\n  }\n}\n\n.menu {\n  border-radius: 100%;\n  width: 5rem;\n  height: 5rem;\n  margin: 0 1.5rem;\n  padding: 1.5rem;\n  position: relative;\n  transition: all 0.2s;\n}\n.menu__hamburger {\n  width: 2.5rem;\n  height: 0.05rem;\n  background-color: #333333;\n  position: absolute;\n  transition: all 0.5s;\n  top: 50%;\n  left: 50%;\n  transform: translate(-50%, 50%);\n}\n.menu__hamburger::before {\n  content: \"\";\n  background-color: #333333;\n  width: inherit;\n  height: inherit;\n  position: absolute;\n  top: 0.5rem;\n}\n.menu__hamburger::after {\n  content: \"\";\n  background-color: #333333;\n  width: inherit;\n  height: inherit;\n  position: absolute;\n  bottom: 0.5rem;\n}\n@media only screen and (min-width: 600px) {\n  .menu:hover {\n    background-color: rgb(237, 237, 237);\n    cursor: pointer;\n  }\n  .menu:hover > .menu__hamburger::before {\n    transform: translateY(0.2rem);\n  }\n  .menu:hover > .menu__hamburger::after {\n    transform: translateY(-0.2rem);\n  }\n}";
+
+  const styleEl = document.createElement("style");
+  const codeEl = document.createTextNode(code);
+  styleEl.type = 'text/css';
+  styleEl.appendChild(codeEl);
+  document.head.appendChild(styleEl);
+}
