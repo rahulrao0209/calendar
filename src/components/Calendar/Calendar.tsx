@@ -1,15 +1,16 @@
 import React from "react";
 import { isToday } from "../../utils/isToday";
-import type { MainProps } from "../../types/types";
-import "./Calendar.scss";
+import type { CalendarProps } from "../../types/types";
 import { findMatchingEvents } from "../../utils/findMatchingEvents";
+import { colorMap } from "../Drawer/Drawer";
+import "./Calendar.scss";
 
 export const todayStyle = {
   'color': '#fff',
   'backgroundColor': '#e6a770'
 }
 
-export const Calendar = ({ data, state, eventList, setEventDay, setShowModal, setOpenedEvent }: MainProps) => {
+export const Calendar = ({ data, eventList, displayEventsByColor, setEventDay, setShowModal, setOpenedEvent }: CalendarProps) => {
   
   const handleClick = (event: React.MouseEvent<HTMLDivElement> | React.MouseEvent<HTMLSpanElement>) => {
     if(typeof(event.currentTarget.dataset.value) === "string") {
@@ -39,6 +40,8 @@ export const Calendar = ({ data, state, eventList, setEventDay, setShowModal, se
                  <span className="calendar__month" style={isCurrentDayToday ? todayStyle: {}}>{item.day}</span>
                  <div className="calendar__event">
                   { matchingEvents?.map((event, index) => 
+                    // @ts-ignore
+                  displayEventsByColor[colorMap.get(event.color).toLowerCase()] ? 
                   <div
                     key={index}
                     data-value={JSON.stringify(event)}
@@ -46,7 +49,7 @@ export const Calendar = ({ data, state, eventList, setEventDay, setShowModal, se
                     style={{ 'backgroundColor': event.color }}
                   >
                       {event.title}
-                  </div>) }
+                  </div> : null)}
                  </div>
                </div>
             )

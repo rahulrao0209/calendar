@@ -1,10 +1,11 @@
 import React, { useReducer, useState, useEffect } from "react";
 import { Header } from "./components/Header/Header";
-import type { monthData, EventData } from "./types/types";
+import type { monthData, EventData, ColorFilterData } from "./types/types";
 import { Main } from "./components/Main/Main";
 import { EventModal } from "./components/EventModal/EventModal";
 import { getDayData } from "./utils/getDayData";
 import { eventReducer } from "./utils/eventReducer";
+import { colorReducer } from "./utils/colorReducer";
 import { useLocalStorage } from "./hooks/useLocalStorage";
 import { useViewport } from "./hooks/useViewport";
 
@@ -15,6 +16,14 @@ const initialEventState: EventData = {
     color: "#e2a601"
 };
 
+const initialEventColors = {
+  yellow: true,
+  pink: true,
+  green: true,
+  orange: true,
+  blue: true
+}
+
 export const App = () => {
     const [data, setData] = useState<monthData[]>([]);
     const [drawerClosed, setDrawerClosed] = useState(false);
@@ -23,6 +32,8 @@ export const App = () => {
     const [eventList, setEventList] = useState<EventData[]>();
     const [state, dispatch] = useReducer(eventReducer, initialEventState);
     const [openedEvent, setOpenedEvent] = useState<EventData>();
+    const [eventColors, setEventColors] = useState<string[]>([]);
+    const [displayEventsByColor, setDisplayEventsByColor] = useReducer(colorReducer, initialEventColors);
     const viewportWidth = useViewport();
 
     // Create the props
@@ -57,6 +68,12 @@ export const App = () => {
       }
     }, [openedEvent])
 
+    // Update our list of colors whenever the eventlist changes
+    useEffect(() => {
+      const colors = new Set(eventList?.map((item) => item.color));
+      setEventColors([...colors]);
+    }, [eventList])
+
     // Save and retrieve events from the local storage
     useLocalStorage(eventList, setEventList);
 
@@ -69,6 +86,9 @@ export const App = () => {
              eventList={eventList}
              openedEvent={openedEvent}
              drawerClosed={drawerClosed}
+             eventColors={eventColors}
+             displayEventsByColor={displayEventsByColor}
+             setDisplayEventsByColor={setDisplayEventsByColor}
              setData={setData}
              setShowModal={setShowModal}
              setEventDay={setEventDay} 

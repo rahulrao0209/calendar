@@ -6,6 +6,8 @@
   flex-flow: column nowrap;
   overflow: hidden;
 
+  font-family: "Noto Sans", sans-serif;
+
   &__create-btn {
     width: 16rem;
     height: 5rem;
@@ -15,7 +17,6 @@
     background-color: $primary-color;
     color: #fff;
 
-    font-family: "Noto Sans", sans-serif;
     font-size: 2rem;
 
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
@@ -32,5 +33,65 @@
       transform: translateY(0.5rem);
       cursor: pointer;
     }
+  }
+
+  // Event filters
+  &__event-filters {
+    margin: 0 0 0 1rem;
+
+    font-size: 1.5rem;
+    color: $default-color;
+
+    width: 90%;
+
+    & > h3 {
+      margin: 4rem 0 1rem 0;
+    }
+  }
+
+  &__filters {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: space-evenly;
+
+    & > div {
+      display: flex;
+      align-items: center;
+
+      margin: 0.8rem 0;
+    }
+
+    // Style the event color custom checkboxes
+    & > div > span:nth-child(1) {
+      display: inline-block;
+
+      width: 2.4rem;
+      height: 2.4rem;
+
+      border: 1px solid currentColor;
+      border-radius: 4px;
+      margin-right: 1rem;
+
+      &:hover {
+        cursor: pointer;
+      }
+    }
+
+    // Style the event color names
+    & > div > span:nth-child(2) {
+      display: inline-block;
+
+      font-size: 1.4rem;
+      font-weight: 400;
+
+      &:hover {
+        cursor: default;
+      }
+    }
+  }
+
+  // Add background colors for the selected filters
+  .add-background-color {
+    background-color: currentColor;
   }
 }
