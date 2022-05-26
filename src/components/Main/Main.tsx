@@ -7,7 +7,7 @@ import "./Main.scss";
 /*
     TODO: Create more specific types for main props and drawer props and create a separate type for Calendar props
 */
-export const Main = ({ data, state, eventList, openedEvent, drawerClosed, eventColors, displayEventsByColor, setDisplayEventsByColor, setData, setShowModal, setEventDay, setOpenedEvent }: MainProps) => {
+export const Main = ({ data, eventList, openedEvent, drawerClosed, eventColors, displayEventsByColor, setDisplayEventsByColor, setData, setShowModal, setEventDay, setOpenedEvent }: MainProps) => {
 
     return (
         <section className={drawerClosed ? 'main--closed' : 'main'}>
@@ -23,11 +23,8 @@ export const Main = ({ data, state, eventList, openedEvent, drawerClosed, eventC
             <Calendar
               data={data}
               eventList={eventList}
-              state={state} setData={setData}
               openedEvent={openedEvent}
-              eventColors={eventColors}
               displayEventsByColor={displayEventsByColor}
-              setDisplayEventsByColor={setDisplayEventsByColor}
               setShowModal={setShowModal}
               setEventDay={setEventDay}
               setOpenedEvent={setOpenedEvent}

@@ -27,9 +27,9 @@ export type CalendarMiniProps = {
 
 export type CalendarProps = {
   data: monthData[];
-  state: EventData;
   eventList: EventData[] | undefined;
   openedEvent: EventData | undefined;
+  displayEventsByColor: ColorFilterData;
   setEventDay: React.Dispatch<React.SetStateAction<monthData>>;
   setShowModal: React.Dispatch<React.SetStateAction<boolean>>;
   setOpenedEvent: React.Dispatch<React.SetStateAction<EventData | undefined>>;

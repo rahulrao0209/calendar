@@ -1,6 +1,6 @@
 import React from "react";
 import { isToday } from "../../utils/isToday";
-import type { MainProps } from "../../types/types";
+import type { CalendarProps } from "../../types/types";
 import { findMatchingEvents } from "../../utils/findMatchingEvents";
 import { colorMap } from "../Drawer/Drawer";
 import "./Calendar.scss";
@@ -10,7 +10,7 @@ export const todayStyle = {
   'backgroundColor': '#e6a770'
 }
 
-export const Calendar = ({ data, state, eventList, displayEventsByColor, setEventDay, setShowModal, setOpenedEvent }: MainProps) => {
+export const Calendar = ({ data, eventList, displayEventsByColor, setEventDay, setShowModal, setOpenedEvent }: CalendarProps) => {
   
   const handleClick = (event: React.MouseEvent<HTMLDivElement> | React.MouseEvent<HTMLSpanElement>) => {
     if(typeof(event.currentTarget.dataset.value) === "string") {
