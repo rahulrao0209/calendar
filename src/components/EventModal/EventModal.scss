@@ -248,3 +248,14 @@
     }
   }
 }
+
+// Show and hide modals
+.show-modal {
+  transition: transform 0.5s;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.hide-modal {
+  transition: transform 0.2s;
+  transform: translate(-50%, -50%) scale(0);
+}

@@ -11,6 +11,7 @@ import "./EventModal.scss";
 
 export const EventModal = ({ show, state, openedEvent, eventList, dispatch, setShowModal, setEventList, setOpenedEvent }: EventModalType) => {
  
+  const className = show ? "event-modal show-modal" : "event-modal hide-modal";
   const checkedIcon = <IoIosCheckmark className="event-modal__checked-icon" />;
   
   const handleTitleChange = (event: React.FormEvent<HTMLInputElement>) => {
@@ -75,8 +76,8 @@ export const EventModal = ({ show, state, openedEvent, eventList, dispatch, setS
     resetModalData();   
   }
   
-  return show ? (
-    <form className="event-modal">
+  return (
+    <form className={className}>
       
       <div className="event-modal__header">
         <div className="event-modal__menu-btn">
@@ -121,5 +122,5 @@ export const EventModal = ({ show, state, openedEvent, eventList, dispatch, setS
      </div>
     
     </form>
-    ) : null 
+    )
 }
