@@ -1,10 +1,12 @@
 import React from "react";
-import { ParentContainer } from "./components/ParentContainer/ParentContainer";
+import { MainPage } from "./pages/MainPage/MainPage";
+import { LandingPage } from "./pages/LandingPage/LandingPage";
 
 export const App = () => {
   return (
     <>
-      <ParentContainer />
+      {/* <LandingPage /> */}
+      <MainPage />
     </>
   )
 };

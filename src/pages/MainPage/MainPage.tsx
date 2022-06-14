@@ -5,9 +5,9 @@ import type { monthData, EventData } from "../../types/types";
 import { colorReducer } from "../../utils/colorReducer";
 import { eventReducer } from "../../utils/eventReducer";
 import { getDayData } from "../../utils/getDayData";
-import { EventModal } from "../EventModal/EventModal";
-import { Header } from "../Header/Header";
-import { Main } from "../Main/Main";
+import { EventModal } from "../../components/EventModal/EventModal";
+import { Header } from "../../components/Header/Header";
+import { Main } from "../../components/Main/Main";
 
 const initialEventState: EventData = {
     title: "",
@@ -24,7 +24,7 @@ const initialEventColors = {
   blue: true
 }
 
-export const ParentContainer = () => {
+export const MainPage = () => {
 
     const [data, setData] = useState<monthData[]>([]);
     const [drawerClosed, setDrawerClosed] = useState(false);
