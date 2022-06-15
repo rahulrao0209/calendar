@@ -1,0 +1,52 @@
+@import "../../../public/index.scss";
+
+.landing-header {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 0.25em;
+  justify-items: center;
+
+  font-family: "Noto Sans", sans-serif;
+  font-weight: 400;
+
+  min-height: 6rem;
+  width: 90%;
+  margin: 0.5rem auto;
+
+  & > div {
+    padding: 0.2em 0.1em;
+    width: 100%;
+
+    background-color: $primary-color;
+    color: #fff;
+
+    text-align: center;
+    border: 0.2px solid $primary-color;
+
+    transition: all 0.2s;
+
+    &:hover {
+      cursor: pointer;
+      background-color: #fff;
+      color: $primary-color;
+    }
+  }
+
+  & > div:first-of-type {
+    border: none;
+    background-color: #fff;
+    color: $primary-color;
+    padding: 0;
+  }
+
+  & > div:last-of-type {
+    grid-column: 1 / -1;
+    justify-self: center;
+  }
+}
+
+.landing__logo {
+  grid-column: 1 / -1;
+  font-family: "Pacifico", cursive;
+  font-size: 4rem;
+}
