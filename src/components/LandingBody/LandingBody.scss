@@ -1,0 +1,37 @@
+@import "../../../public/index.scss";
+
+.landing-body {
+  font-family: "Noto Sans", sans-serif;
+}
+
+.landing-body__form {
+  margin: 3.5rem auto;
+  text-align: center;
+
+  font-size: 2rem;
+
+  & > form {
+    label {
+      display: none;
+    }
+
+    & input {
+      margin: 0.5em 0;
+      padding: 1rem 2rem;
+
+      color: #332101;
+
+      width: 80%;
+      border: 0.1px solid currentColor;
+      border-radius: 8px;
+
+      &::placeholder {
+        color: currentColor;
+      }
+
+      &:focus {
+        outline: none;
+      }
+    }
+  }
+}
