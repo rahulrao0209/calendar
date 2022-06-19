@@ -6,6 +6,7 @@ export const LandingPage = () => {
   return (
     <>
       <LandingHeader />
+      
     </>
   ) 
 }
