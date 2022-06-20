@@ -8,9 +8,9 @@ export const LandingHeader = () => {
       <div className="landing__logo">Calendar</div>
 
       <div className="landing__links">
-        <NavLink to="">Login</NavLink>
+        <NavLink to="/login">Login</NavLink>
         <NavLink to="">Signup</NavLink>
-        <NavLink to="">About</NavLink>
+        <NavLink to="/about">About</NavLink>
       </div>
 
     </header>
