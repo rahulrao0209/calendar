@@ -12,8 +12,8 @@ export const LandingBody = () => {
         </div>
         <div className="landing-body__form">
           <Routes>
+            <Route index element={<Signup />}/>
             <Route path="/login" element={<Login />}/>
-            <Route path="*" element={<Signup />}/>
           </Routes>
         </div>
       </section>
