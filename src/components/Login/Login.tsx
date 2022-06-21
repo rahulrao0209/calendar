@@ -5,13 +5,13 @@ export const Login = () => {
     <>
       <form>
         <div>
-          <label>Email</label>
-          <input type="email" placeholder="Enter Email"/>
+          <input name="email" type="email" />
+          <label htmlFor="email">Email</label>
         </div>
 
         <div>
-          <label>Password</label>
-          <input type="password" placeholder="Enter Password"/>
+          <input name="password" type="password" />
+          <label htmlFor="password">Password</label>
         </div>
       </form>
     </>

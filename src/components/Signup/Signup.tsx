@@ -5,28 +5,28 @@ export const Signup = () => {
     <>
       <form>
         <div>
-          <label>Firstname</label>
-          <input type="text" placeholder="First Name"/>
+          <input name="firstname" type="text" />
+          <label htmlFor="firstname">Firstname</label>
         </div>
 
         <div>
-          <label>Lastname</label>
-          <input type="text" placeholder="Last Name"/>
+          <input name="lastname" type="text" />
+          <label htmlFor="lastname">Lastname</label>
         </div>
 
         <div>
-          <label>Email</label>
-          <input type="email" placeholder="Enter Email"/>
+          <input name="email" type="email" />
+          <label htmlFor="email">Email</label>
         </div>
 
         <div>
-          <label>Password</label>
-          <input type="password" placeholder="Enter Password"/>
+          <input name="password" type="password" />
+          <label htmlFor="password">Password</label>
         </div>
 
         <div>
-          <label>Confirm Password</label>
-          <input type="password" placeholder="Confirm Password"/>
+          <input name="confirm password" type="password" />
+          <label htmlFor="confirm password">Confirm Password</label>
         </div>
       </form>
     </>

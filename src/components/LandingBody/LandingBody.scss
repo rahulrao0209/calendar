@@ -6,31 +6,43 @@
 
 .landing-body__form {
   margin: 3.5rem auto;
-  text-align: center;
-
   font-size: 2rem;
 
   & > form {
+    & > div {
+      position: relative;
+      margin: 2.5rem auto;
+      width: 80%;
+    }
+
     label {
-      display: none;
+      position: absolute;
+      left: 2em;
+      background-color: #fff;
+      font-size: 1.4rem;
+
+      letter-spacing: 0.15em;
+      transition: all 0.5s;
     }
 
     & input {
       margin: 0.5em 0;
-      padding: 1rem 2rem;
+      padding: 1.4rem 2rem;
+      width: 100%;
 
       color: #332101;
-
-      width: 80%;
-      border: 0.1px solid currentColor;
-      border-radius: 6px;
-
-      &::placeholder {
-        color: currentColor;
-      }
+      border: 0.05px solid currentColor;
+      border-radius: 4px;
 
       &:focus {
         outline: none;
+        color: burlywood;
+      }
+
+      &:focus ~ label {
+        outline: none;
+        color: burlywood;
+        transform: translateY(4.2em);
       }
     }
   }
