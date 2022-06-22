@@ -35,12 +35,21 @@
 
   & > a {
     text-decoration: none;
-    color: #332101;
   }
 
   & > a:nth-child(2)::before,
   & > a:nth-child(2)::after {
     content: "|";
     margin: 0 1.5rem 0 1.5rem;
+    color: #332101;
   }
+}
+
+// Styles for active and inactive link states
+.active-link {
+  color: burlywood;
+}
+
+.inactive-link {
+  color: #332101;
 }

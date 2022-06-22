@@ -28,6 +28,8 @@ export const Signup = () => {
           <input name="confirm password" type="password" />
           <label htmlFor="confirm password">Confirm Password</label>
         </div>
+
+        <button>Signup</button>
       </form>
     </>
   )

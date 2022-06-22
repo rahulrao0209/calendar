@@ -13,6 +13,8 @@ export const Login = () => {
           <input name="password" type="password" />
           <label htmlFor="password">Password</label>
         </div>
+
+        <button>Login</button>
       </form>
     </>
   )
