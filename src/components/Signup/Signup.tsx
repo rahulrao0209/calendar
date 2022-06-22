@@ -1,6 +1,11 @@
 import React from "react";
 
 export const Signup = () => {
+
+  const handleSignup = (event: React.BaseSyntheticEvent<MouseEvent>) => {
+    	event.preventDefault();
+  }
+
   return (
     <>
       <form>
@@ -29,7 +34,7 @@ export const Signup = () => {
           <label htmlFor="confirm password">Confirm Password</label>
         </div>
 
-        <button>Signup</button>
+        <button onClick={handleSignup}>Signup</button>
       </form>
     </>
   )

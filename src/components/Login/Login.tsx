@@ -1,6 +1,11 @@
 import React from "react";
 
 export const Login = () => {
+  
+  const handleLogin = (event: React.BaseSyntheticEvent<MouseEvent>) => {
+    event.preventDefault(); 
+  }
+
   return (
     <>
       <form>
@@ -14,7 +19,7 @@ export const Login = () => {
           <label htmlFor="password">Password</label>
         </div>
 
-        <button>Login</button>
+        <button onClick={handleLogin}>Login</button>
       </form>
     </>
   )
