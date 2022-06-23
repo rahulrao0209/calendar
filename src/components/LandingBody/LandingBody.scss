@@ -1,12 +1,44 @@
 @import "../../../public/index.scss";
 
 .landing-body {
+  margin: 2rem 0;
+  padding: 0;
   font-family: "Noto Sans", sans-serif;
+
+  display: flex;
+  flex-direction: column;
+
+  @media only screen and (min-width: 768px) {
+    padding: 0 4rem;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+.landing-body__image {
+  margin: 4rem auto;
+  transform: rotateZ(-4deg);
+  width: 50%;
+  max-width: 28rem;
+
+  @media only screen and (min-width: 768px) {
+    max-width: 40rem;
+  }
+
+  & > img {
+    width: 100%;
+  }
 }
 
 .landing-body__form {
-  margin: 3.5rem auto;
+  margin: 0 auto;
+  width: 100%;
   font-size: 2rem;
+
+  @media only screen and (min-width: 768px) {
+    width: 50%;
+  }
 
   & > form {
     & > div {
@@ -74,4 +106,16 @@
       }
     }
   }
+}
+
+footer {
+  font-size: 1.8rem;
+  font-weight: 400;
+
+  position: fixed;
+  left: 50%;
+  bottom: 4rem;
+  transform: translateX(-50%);
+
+  color: #8f8f8f;
 }

@@ -5,7 +5,7 @@
   flex-direction: column;
   align-items: center;
 
-  margin: 12vh 1rem 0 1rem;
+  margin: 3vh 1rem 0 1rem;
   min-height: 6rem;
 
   color: #332101;
@@ -14,11 +14,11 @@
     flex-direction: row;
     justify-content: space-between;
 
-    margin: 0 4rem;
+    margin: 2rem 4rem;
   }
 
   @media only screen and (min-width: 768px) {
-    margin: 0 12rem;
+    margin: 2rem 12rem;
   }
 }
 
