@@ -17,9 +17,6 @@ export const LandingBody = () => {
             <Route path="/login" element={<Login />}/>
           </Routes>
         </div>
-        <footer>
-          Copyright &copy; 2022
-        </footer>
       </section>
     )
 }
