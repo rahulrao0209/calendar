@@ -13,6 +13,7 @@
   "dependencies": {
     "@snowpack/plugin-sass": "^1.4.0",
     "@snowpack/plugin-typescript": "^1.2.1",
+    "firebase": "^9.8.4",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
     "react-icons": "^4.3.1",

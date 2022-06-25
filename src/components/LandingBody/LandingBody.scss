@@ -45,9 +45,13 @@
   & > form {
     & > div {
       position: relative;
-      margin: 2.5rem auto;
+      margin: 1.8rem auto;
       width: 80%;
       max-width: 80rem;
+
+      @media only screen and (min-width: 768px) {
+        margin: 2.5rem auto;
+      }
     }
 
     label {
