@@ -111,5 +111,16 @@
         transform: translateY(0.5rem);
       }
     }
+
+    & > p {
+      margin: 2rem 0;
+      text-align: center;
+      font-size: 1.5rem;
+      font-weight: 400;
+
+      & > a {
+        color: #332101;
+      }
+    }
   }
 }

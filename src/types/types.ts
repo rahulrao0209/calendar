@@ -100,3 +100,18 @@ export type Action =
  | { type: 'update-green', data: boolean }
  | { type: 'update-orange', data: boolean }
  | { type: 'update-blue', data: boolean }
+
+
+ export type User = {
+  firstname: string;
+  lastname: string;
+  email: string;
+  password: string;
+  confirmPassword: string;
+ }
+
+ export type UserForDatabase = {
+  firstname: string;
+  lastname: string;
+  email: string;
+ }

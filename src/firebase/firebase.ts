@@ -1,5 +1,7 @@
 import { initializeApp } from "firebase/app";
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
+import { getFirestore, collection, addDoc } from "firebase/firestore"; 
+import type { User, UserForDatabase } from "../types/types";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -14,17 +16,46 @@ const firebaseConfig = {
 // Initialize Firebase
 const firebaseApp = initializeApp(firebaseConfig);
 const firebaseAuth = getAuth(firebaseApp);
+const firestoreDb = getFirestore(firebaseApp);
 
 // Signup a new user
-export const signupNewUser = async (email: string, password: string, error = '') => {
+export const signupNewUser = async (user: User, error = '') => {
   try {
     if(error !== '') throw new Error(error);
-    const userCredentials = await createUserWithEmailAndPassword(firebaseAuth, email, password);
-    const user = userCredentials.user;
-
-    console.log("SIGNED UP USER: ", user);
     
+    const userCredentials = await createUserWithEmailAndPassword(firebaseAuth, user.email, user.password);
+    
+    const userForDatabase = {
+      id: userCredentials.user.uid,
+      firstname: user.firstname,
+      lastname: user.lastname,
+      email: user.email
+    }
+
+    // Add user to firestore users collection
+    addUserToFirestore(userForDatabase);
+
   } catch(err) {
-    console.log("AUTH ERROR: ", err);
+    console.log("SIGNUP AUTH ERROR: ", err);
   }
 }
+
+export const signInUser = async (user: User, error = '') => {
+  try {
+    if(error !== '') throw new Error(error);
+    const userCredentials = await signInWithEmailAndPassword(firebaseAuth, user.email, user.password);
+    const signedInUser = userCredentials.user;
+    console.log("SignedIn user: ", signedInUser);
+  } catch(err) {
+    console.log("SIGNIN AUTH ERROR: ", err);
+  }
+}
+
+export const addUserToFirestore = async (user: UserForDatabase) => {
+  try {
+    const docRef = await addDoc(collection(firestoreDb, "users"), user);
+    console.log("Document written with ID: ", docRef.id);
+  } catch (err) {
+    console.error("Error adding document: ", err);
+  }
+};
