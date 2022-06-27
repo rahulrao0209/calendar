@@ -1,7 +1,7 @@
 import { initializeApp } from "firebase/app";
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
-import { getFirestore, collection, addDoc } from "firebase/firestore"; 
-import type { User, UserForDatabase } from "../types/types";
+import { getFirestore, getDoc, doc, setDoc } from "firebase/firestore"; 
+import type { User, UserForDatabase, LoggedInUser } from "../types/types";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -26,7 +26,7 @@ export const signupNewUser = async (user: User, error = '') => {
     const userCredentials = await createUserWithEmailAndPassword(firebaseAuth, user.email, user.password);
     
     const userForDatabase = {
-      id: userCredentials.user.uid,
+      userId: userCredentials.user.uid,
       firstname: user.firstname,
       lastname: user.lastname,
       email: user.email
@@ -40,22 +40,34 @@ export const signupNewUser = async (user: User, error = '') => {
   }
 }
 
-export const signInUser = async (user: User, error = '') => {
+export const signInUser = async (user: LoggedInUser, error = '') => {
   try {
     if(error !== '') throw new Error(error);
     const userCredentials = await signInWithEmailAndPassword(firebaseAuth, user.email, user.password);
-    const signedInUser = userCredentials.user;
+    const signedInUser = userCredentials.user.uid;
+    console.log("Signed in user: ", signedInUser);
+    getUserFromFirestore(signedInUser);
     console.log("SignedIn user: ", signedInUser);
   } catch(err) {
     console.log("SIGNIN AUTH ERROR: ", err);
   }
 }
 
-export const addUserToFirestore = async (user: UserForDatabase) => {
+const addUserToFirestore = async (user: UserForDatabase) => {
   try {
-    const docRef = await addDoc(collection(firestoreDb, "users"), user);
-    console.log("Document written with ID: ", docRef.id);
+    await setDoc(doc(firestoreDb, "users", user.userId), user);
+    console.log("User authenticated and persisted in firestore");
   } catch (err) {
-    console.error("Error adding document: ", err);
+    console.error("Error setting document in the users collection: ", err);
   }
 };
+
+const getUserFromFirestore = async (userId: string) => {  
+  const docRef = doc(firestoreDb, "users", userId);
+  const docSnap = await getDoc(docRef);
+
+  if(!docSnap) return;
+
+  console.log("Logged In User: ", docSnap.data());
+
+}

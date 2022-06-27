@@ -110,7 +110,13 @@ export type Action =
   confirmPassword: string;
  }
 
+ export type LoggedInUser = {
+  email: string;
+  password: string;
+ }
+
  export type UserForDatabase = {
+  userId: string;
   firstname: string;
   lastname: string;
   email: string;

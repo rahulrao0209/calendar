@@ -27,18 +27,8 @@ export const Signup = () => {
 
       if(password !== confirmPassword) errorMessage = 'Passwords being entered do not match. Please check again';
 
-      const UserForDB: UserForDatabase = createUserForDatabase(user);
-
       signupNewUser(user, errorMessage);
       setUser(defaultUser);
-  }
-
-  const createUserForDatabase  = (user: User) => {
-    return {
-      firstname: user.firstname,
-      lastname: user.lastname,
-      email: user.email
-    }
   }
 
   const updateUser = (event: React.BaseSyntheticEvent<MouseEvent>) => {

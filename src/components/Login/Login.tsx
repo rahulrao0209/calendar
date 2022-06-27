@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { signInUser } from "../../firebase/firebase";
+import { LoggedInUser } from "../../types/types";
 
 const defaultUser = {
   email: '',
@@ -19,8 +20,8 @@ export const Login = () => {
 
     if(!email || !password || email === '' || password === '') errorMessage = 'Enter a valid email or password to signup!';
 
+    signInUser(user, errorMessage);
     setUser(defaultUser);
-    signInUser(email, password, errorMessage);
   }
 
   const updateUser = (event: React.BaseSyntheticEvent<MouseEvent>) => {
