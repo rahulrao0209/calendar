@@ -44,10 +44,10 @@ export const signInUser = async (user: LoggedInUser, error = '') => {
   try {
     if(error !== '') throw new Error(error);
     const userCredentials = await signInWithEmailAndPassword(firebaseAuth, user.email, user.password);
-    const signedInUser = userCredentials.user.uid;
-    console.log("Signed in user: ", signedInUser);
-    getUserFromFirestore(signedInUser);
-    console.log("SignedIn user: ", signedInUser);
+    const signedInUserId = userCredentials.user.uid;
+
+    return getUserFromFirestore(signedInUserId);
+
   } catch(err) {
     console.log("SIGNIN AUTH ERROR: ", err);
   }
@@ -68,6 +68,5 @@ const getUserFromFirestore = async (userId: string) => {
 
   if(!docSnap) return;
 
-  console.log("Logged In User: ", docSnap.data());
-
+  return docSnap.data();
 }

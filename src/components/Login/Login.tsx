@@ -1,6 +1,6 @@
 import React, { useState } from "react";
+import { useAuth } from "../../hooks/useAuth";
 import { signInUser } from "../../firebase/firebase";
-import { LoggedInUser } from "../../types/types";
 
 const defaultUser = {
   email: '',
@@ -11,7 +11,7 @@ export const Login = () => {
   
   const [user, setUser] = useState(defaultUser);
 
-  const handleLogin = (event: React.BaseSyntheticEvent<MouseEvent>) => {
+  const handleLogin = async (event: React.BaseSyntheticEvent<MouseEvent>) => {
     event.preventDefault(); 
 
     const email = user?.email;
@@ -20,8 +20,12 @@ export const Login = () => {
 
     if(!email || !password || email === '' || password === '') errorMessage = 'Enter a valid email or password to signup!';
 
-    signInUser(user, errorMessage);
+    const signedInUser = await signInUser(user, errorMessage);
     setUser(defaultUser);
+
+    // Set the context data to reflect the current signed in user
+    console.log("Signed in user: ", signedInUser);
+    useAuth(signedInUser);
   }
 
   const updateUser = (event: React.BaseSyntheticEvent<MouseEvent>) => {
