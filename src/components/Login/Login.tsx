@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { useAuth } from "../../hooks/useAuth";
+import React, { useState, useContext } from "react";
+import { AuthContext } from "../../App";
 import { signInUser } from "../../firebase/firebase";
 
 const defaultUser = {
@@ -10,6 +10,7 @@ const defaultUser = {
 export const Login = () => {
   
   const [user, setUser] = useState(defaultUser);
+  const { setLoggedInUser } =  useContext(AuthContext);
 
   const handleLogin = async (event: React.BaseSyntheticEvent<MouseEvent>) => {
     event.preventDefault(); 
@@ -24,8 +25,7 @@ export const Login = () => {
     setUser(defaultUser);
 
     // Set the context data to reflect the current signed in user
-    console.log("Signed in user: ", signedInUser);
-    useAuth(signedInUser);
+    setLoggedInUser(signedInUser);
   }
 
   const updateUser = (event: React.BaseSyntheticEvent<MouseEvent>) => {
