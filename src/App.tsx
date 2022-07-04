@@ -8,6 +8,8 @@ export const AuthContext: any = createContext({});
 export const App = () => {
   const [loggedInUser, setLoggedInUser] = useState();
   
+  // Logged in user
+  console.log("Logged In User: ", loggedInUser);
   return (
     <>
       <AuthContext.Provider value={{loggedInUser, setLoggedInUser}}>

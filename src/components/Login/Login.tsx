@@ -1,4 +1,5 @@
 import React, { useState, useContext } from "react";
+import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../App";
 import { signInUser } from "../../firebase/firebase";
 
@@ -11,6 +12,7 @@ export const Login = () => {
   
   const [user, setUser] = useState(defaultUser);
   const { setLoggedInUser } =  useContext(AuthContext);
+  const navigate = useNavigate();
 
   const handleLogin = async (event: React.BaseSyntheticEvent<MouseEvent>) => {
     event.preventDefault(); 
@@ -24,8 +26,13 @@ export const Login = () => {
     const signedInUser = await signInUser(user, errorMessage);
     setUser(defaultUser);
 
+    if(!signedInUser) return;
+
     // Set the context data to reflect the current signed in user
     setLoggedInUser(signedInUser);
+
+    // Navigate to the calendar page if login is successful
+    navigate("/calendar");
   }
 
   const updateUser = (event: React.BaseSyntheticEvent<MouseEvent>) => {

@@ -1,16 +1,24 @@
-import React, { useEffect, useState } from "react";
-import { IoCaretBack, IoCaretForward, IoCaretDown } from "react-icons/io5";
+import React, { useEffect, useState, useContext } from "react";
+import { useNavigate } from "react-router-dom";
+import { IoCaretBack, IoCaretForward } from "react-icons/io5";
 import { getMonthData } from "../../utils/getMonthData";
+import { AuthContext } from "../../App";
 import type { NavProps } from "../../types/types";
 import "./Nav.scss";
 
 export const Nav = ({ data, setData }: NavProps) => {
     
     const [month, setMonth] = useState(new Date().getMonth());
+    const { loggedInUser, setLoggedInUser } =  useContext(AuthContext);
+    const navigate = useNavigate();
 
     useEffect(() => {
       setData(getMonthData(month));
     }, [month]);
+
+    useEffect(() => {
+      if(!loggedInUser) navigate("/");
+    }, [loggedInUser])
 
     const handleNext = () => {
         console.log("SET MONTH");
@@ -25,6 +33,10 @@ export const Nav = ({ data, setData }: NavProps) => {
     const setToday = () => {
         console.log("SET TODAY");
         setMonth(new Date().getMonth());
+    }
+
+    const handleLogout = () => {
+        setLoggedInUser(undefined);
     }
 
     return (
@@ -44,12 +56,11 @@ export const Nav = ({ data, setData }: NavProps) => {
                 <div className="nav__month">{data[data.length - 1]?.monthName} {data[data.length - 1]?.year}</div>
             </nav>
 
-            {/* <nav className="nav__right">
-                <div className="nav__format">
-                    Month
-                    <span><IoCaretDown className="icon--down"/></span>
-                </div>
-            </nav> */}
+            <nav className="nav__right">
+                <button className="nav__logout" onClick={handleLogout}>
+                    Logout { loggedInUser?.firstname}
+                </button>
+            </nav>
         </div>
     )
 }
