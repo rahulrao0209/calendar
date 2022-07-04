@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { signupNewUser } from "../../firebase/firebase";
-import type { User, UserForDatabase } from "../../types/types";
+import type { User } from "../../types/types";
 
 const defaultUser = {
   firstname: '',
@@ -14,6 +14,7 @@ const defaultUser = {
 export const Signup = () => {
 
   const [user, setUser] = useState<User>(defaultUser);
+  const [error, setError] = useState('');
 
   const handleSignup = (event: React.BaseSyntheticEvent<MouseEvent>) => {
     	event.preventDefault();
@@ -23,9 +24,9 @@ export const Signup = () => {
       const confirmPassword = user.confirmPassword;
       let errorMessage = '';
 
-      if(!email || !password || email === '' || password === '') errorMessage = 'Enter a valid email or password to signup!';
+      if(!email || !password || email === '' || password === '') {errorMessage = 'Enter a valid email or password to signup!'; setError(errorMessage);}
 
-      if(password !== confirmPassword) errorMessage = 'Passwords being entered do not match. Please check again';
+      if(password !== confirmPassword) {errorMessage = 'Passwords being entered do not match. Please check again'; setError(errorMessage);}
 
       signupNewUser(user, errorMessage);
       setUser(defaultUser);
@@ -65,6 +66,7 @@ export const Signup = () => {
 
         <button onClick={handleSignup}>Signup</button>
         <p>Already have an account? <Link to="/login">Login</Link></p>
+        <p className="error">{error}</p>
       </form>
     </>
   )

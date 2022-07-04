@@ -1,5 +1,5 @@
 import React, { useState, useContext } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { AuthContext } from "../../App";
 import { signInUser } from "../../firebase/firebase";
 
@@ -11,6 +11,7 @@ const defaultUser = {
 export const Login = () => {
   
   const [user, setUser] = useState(defaultUser);
+  const [error, setError] = useState('');
   const { setLoggedInUser } =  useContext(AuthContext);
   const navigate = useNavigate();
 
@@ -21,7 +22,7 @@ export const Login = () => {
     const password = user?.password;
     let errorMessage = '';
 
-    if(!email || !password || email === '' || password === '') errorMessage = 'Enter a valid email or password to signup!';
+    if(!email || !password || email === '' || password === '') {errorMessage = 'Enter a valid email or password to login!'; setError(errorMessage)}
 
     const signedInUser = await signInUser(user, errorMessage);
     setUser(defaultUser);
@@ -53,6 +54,8 @@ export const Login = () => {
         </div>
 
         <button onClick={handleLogin}>Login</button>
+        <p>Don't have an account? <Link to="/">Signup</Link></p>
+        <p className="error">{error}</p>
       </form>
     </>
   )
