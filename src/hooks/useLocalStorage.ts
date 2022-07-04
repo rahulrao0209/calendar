@@ -7,7 +7,6 @@ export const useLocalStorage = (eventList: EventData[] | undefined, setEventList
     useEffect(() => {
         const savedEvents = localStorage.getItem('eventlist');
             if(typeof(savedEvents) === 'string' && savedEvents != undefined && savedEvents != 'undefined') {
-                console.log('saved events: ', JSON.parse(savedEvents));
                 setEventList(JSON.parse(savedEvents));
             }
     }, [])

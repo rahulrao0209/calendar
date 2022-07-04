@@ -42,7 +42,7 @@ export const Drawer = ({ data, eventColors, displayEventsByColor, setDisplayEven
                 setDisplayEventsByColor({ type: 'update-blue', data: !blue });
                 return;
             default:
-                console.log('No color selected');
+                return;
         }
         
     }
@@ -59,7 +59,6 @@ export const Drawer = ({ data, eventColors, displayEventsByColor, setDisplayEven
     useEffect(() => {
       const updateFilters = () => {
         const allFilters = document.querySelectorAll('.filter-box');
-        console.log("allFilters: ", allFilters);
 
         allFilters.forEach((filter) => {
             const color = filter.attributes.getNamedItem('data-color')?.value;
