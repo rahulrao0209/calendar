@@ -2,6 +2,7 @@ import React from "react";
 import { Routes, Route } from "react-router-dom";
 import { Signup } from "../Signup/Signup";
 import { Login } from "../Login/Login";
+import { About } from "../About/About";
 import calendarImage from "../../../public/images/calendar.jpg";
 import "./LandingBody.scss";
 
@@ -15,6 +16,7 @@ export const LandingBody = () => {
           <Routes>
             <Route index element={<Signup />}/>
             <Route path="/login" element={<Login />}/>
+            <Route path="/about" element={<About />}/>
           </Routes>
         </div>
       </section>

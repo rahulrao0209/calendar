@@ -1,0 +1,15 @@
+@import "../../../public/index.scss";
+
+.about {
+  padding: 0 1.5em;
+  text-align: center;
+  color: rgb(49, 49, 49);
+
+  & > h1 {
+    margin: 0.8rem 0;
+  }
+
+  & > p {
+    line-height: 1.6em;
+  }
+}
