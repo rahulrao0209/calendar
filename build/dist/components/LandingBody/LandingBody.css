@@ -1,0 +1,144 @@
+@import url("https://fonts.googleapis.com/css2?family=Pacifico&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Raleway:wght@100;200;400&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans:wght@100;200;400;500&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html {
+  font-size: 62.5%;
+  box-sizing: border-box;
+}
+@media only screen and (max-width: 1200px) {
+  html {
+    font-size: 58%;
+  }
+}
+@media only screen and (max-width: 995px) {
+  html {
+    font-size: 55%;
+  }
+}
+@media only screen and (max-width: 900px) {
+  html {
+    font-size: 52%;
+  }
+}
+
+.landing-body {
+  margin: 2rem 0;
+  padding: 0;
+  font-family: "Noto Sans", sans-serif;
+  display: flex;
+  flex-direction: column;
+  min-height: 60vh;
+}
+@media only screen and (min-width: 768px) {
+  .landing-body {
+    padding: 0 4rem;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+.landing-body__image {
+  margin: 4rem auto;
+  transform: rotateZ(-4deg);
+  width: 50%;
+  max-width: 28rem;
+}
+@media only screen and (min-width: 768px) {
+  .landing-body__image {
+    max-width: 40rem;
+  }
+}
+.landing-body__image > img {
+  width: 100%;
+}
+
+.landing-body__form {
+  margin: 0 auto;
+  width: 100%;
+  font-size: 2rem;
+}
+@media only screen and (min-width: 768px) {
+  .landing-body__form {
+    width: 50%;
+  }
+}
+.landing-body__form > form > div {
+  position: relative;
+  margin: 1.8rem auto;
+  width: 80%;
+  max-width: 80rem;
+}
+@media only screen and (min-width: 768px) {
+  .landing-body__form > form > div {
+    margin: 2.5rem auto;
+  }
+}
+.landing-body__form > form label {
+  position: absolute;
+  left: 2em;
+  background-color: #fff;
+  font-size: 1.4rem;
+  letter-spacing: 0.15em;
+  transition: all 0.5s;
+}
+.landing-body__form > form input {
+  margin: 0.5em 0;
+  padding: 1.4rem 2rem;
+  width: 100%;
+  color: #332101;
+  border: 0.05px solid currentColor;
+  border-radius: 4px;
+}
+.landing-body__form > form input:focus {
+  outline: none;
+  color: burlywood;
+}
+.landing-body__form > form input:focus ~ label {
+  outline: none;
+  color: burlywood;
+  transform: translateY(4.2em);
+}
+.landing-body__form > form button {
+  width: 80%;
+  max-width: 40rem;
+  display: block;
+  margin: 0 auto;
+  padding: 0.8em 1em;
+  border-radius: 4px;
+  border: none;
+  background-color: #332101;
+  color: #fff;
+  font-size: 2rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  box-shadow: 0 16px 12px rgba(0, 0, 0, 0.25);
+  transition: all 0.2s;
+}
+.landing-body__form > form button:hover {
+  background-color: burlywood;
+  cursor: pointer;
+}
+.landing-body__form > form button:active {
+  box-shadow: 0 8px 8px rgba(0, 0, 0, 0.25);
+  transform: translateY(0.5rem);
+}
+.landing-body__form > form > p {
+  margin: 2rem 0;
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: 400;
+}
+.landing-body__form > form > p > a {
+  color: #332101;
+}
+
+.error {
+  color: red;
+}

@@ -1,5 +1,8 @@
 {
   "imports": {
+    "firebase/app": "./firebase/app.js",
+    "firebase/auth": "./firebase/auth.js",
+    "firebase/firestore": "./firebase/firestore.js",
     "react": "./react.js",
     "react-dom/client": "./react-dom/client.js",
     "react-icons/ai": "./react-icons/ai.js",
@@ -7,6 +10,7 @@
     "react-icons/io": "./react-icons/io.js",
     "react-icons/io5": "./react-icons/io5.js",
     "react-icons/md": "./react-icons/md.js",
-    "react-icons/vsc": "./react-icons/vsc.js"
+    "react-icons/vsc": "./react-icons/vsc.js",
+    "react-router-dom": "./react-router-dom.js"
   }
 }

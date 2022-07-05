@@ -7,6 +7,7 @@ import {AiOutlineClockCircle} from "../../../_snowpack/pkg/react-icons/ai.js";
 import {IoIosCheckmark} from "../../../_snowpack/pkg/react-icons/io.js";
 import "./EventModal.css.proxy.js";
 export const EventModal = ({show, state, openedEvent, eventList, dispatch, setShowModal, setEventList, setOpenedEvent}) => {
+  const className = show ? "event-modal show-modal" : "event-modal hide-modal";
   const checkedIcon = /* @__PURE__ */ React.createElement(IoIosCheckmark, {
     className: "event-modal__checked-icon"
   });
@@ -55,8 +56,8 @@ export const EventModal = ({show, state, openedEvent, eventList, dispatch, setSh
     }
     resetModalData();
   };
-  return show ? /* @__PURE__ */ React.createElement("form", {
-    className: "event-modal"
+  return /* @__PURE__ */ React.createElement("form", {
+    className
   }, /* @__PURE__ */ React.createElement("div", {
     className: "event-modal__header"
   }, /* @__PURE__ */ React.createElement("div", {
@@ -112,5 +113,5 @@ export const EventModal = ({show, state, openedEvent, eventList, dispatch, setSh
     "data-color": "#12d8fa"
   }, " ", state.color === "#12d8fa" ? checkedIcon : null, " ")), /* @__PURE__ */ React.createElement("button", {
     onClick: saveEvent
-  }, "Save"))) : null;
+  }, "Save")));
 };

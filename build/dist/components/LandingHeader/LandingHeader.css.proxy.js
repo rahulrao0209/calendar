@@ -1,0 +1,10 @@
+// [snowpack] add styles to the page (skip if no document exists)
+if (typeof document !== 'undefined') {
+  const code = "@import url(\"https://fonts.googleapis.com/css2?family=Pacifico&display=swap\");\n@import url(\"https://fonts.googleapis.com/css2?family=Raleway:wght@100;200;400&display=swap\");\n@import url(\"https://fonts.googleapis.com/css2?family=Noto+Sans:wght@100;200;400;500&display=swap\");\n* {\n  margin: 0;\n  padding: 0;\n  box-sizing: inherit;\n}\n\nhtml {\n  font-size: 62.5%;\n  box-sizing: border-box;\n}\n@media only screen and (max-width: 1200px) {\n  html {\n    font-size: 58%;\n  }\n}\n@media only screen and (max-width: 995px) {\n  html {\n    font-size: 55%;\n  }\n}\n@media only screen and (max-width: 900px) {\n  html {\n    font-size: 52%;\n  }\n}\n\n.landing-header {\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  margin: 3vh 1rem 0 1rem;\n  min-height: 6rem;\n  color: #332101;\n}\n@media only screen and (min-width: 478px) {\n  .landing-header {\n    flex-direction: row;\n    justify-content: space-between;\n    margin: 2rem 4rem;\n  }\n}\n@media only screen and (min-width: 768px) {\n  .landing-header {\n    margin: 2rem 12rem;\n  }\n}\n\n.landing__logo {\n  font-size: 3.25rem;\n}\n\n.landing__links {\n  font-family: \"Noto Sans\", sans-serif;\n  font-size: 2rem;\n  display: flex;\n  justify-content: space-between;\n}\n.landing__links > a {\n  text-decoration: none;\n}\n.landing__links > a:nth-child(2)::before, .landing__links > a:nth-child(2)::after {\n  content: \"|\";\n  margin: 0 1.5rem 0 1.5rem;\n  color: #332101;\n}\n\n.active-link {\n  color: burlywood;\n}\n\n.inactive-link {\n  color: #332101;\n}";
+
+  const styleEl = document.createElement("style");
+  const codeEl = document.createTextNode(code);
+  styleEl.type = 'text/css';
+  styleEl.appendChild(codeEl);
+  document.head.appendChild(styleEl);
+}

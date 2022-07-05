@@ -1,0 +1,40 @@
+@import url("https://fonts.googleapis.com/css2?family=Pacifico&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Raleway:wght@100;200;400&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans:wght@100;200;400;500&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html {
+  font-size: 62.5%;
+  box-sizing: border-box;
+}
+@media only screen and (max-width: 1200px) {
+  html {
+    font-size: 58%;
+  }
+}
+@media only screen and (max-width: 995px) {
+  html {
+    font-size: 55%;
+  }
+}
+@media only screen and (max-width: 900px) {
+  html {
+    font-size: 52%;
+  }
+}
+
+.about {
+  padding: 0 1.5em;
+  text-align: center;
+  color: rgb(49, 49, 49);
+}
+.about > h1 {
+  margin: 0.8rem 0;
+}
+.about > p {
+  line-height: 1.6em;
+}
