@@ -2,6 +2,8 @@
 
 [Calendar Live Link](https://calendar-ra.netlify.app/)
 
+[Calendar V2 live link (with firebase auth and login)](https://calendar-ra-v2.netlify.app/)
+
 ***Stack - React, Typescript, Javascript, HTML, CSS, SASS, Snowpack***
 
 ---
